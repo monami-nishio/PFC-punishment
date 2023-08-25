@@ -4,16 +4,11 @@ types = {'RCNLDF', 'RNLDF'};
 
 for i = 1:length(tasks)
     list = dir(append('../../dataset/', string(tasks(i)), '*.mat'));
-    param = append('../../param/', string(tasks(i)), string(types(i)), '.mat');
+    param = append('../../param/original/', string(tasks(i)), string(types(i)), '.mat');
     x = load(param);
     paramall = [];
-    if i == 1;
-        cord = [4 1 5 2 3];
-    elseif i ==2;
-        cord = [1 2 3 7 4 5 6];
-    end
     for t = 1:length(x.ML_Q)
-        xnew = x.ML_Q{cord(t),2};
+        xnew = x.ML_Q{t,2};
         xnew = struct2cell(xnew);
         xnew = cell2mat(xnew);
         paramall = [paramall xnew];

@@ -1,15 +1,9 @@
-function ML_Q = mle_fitting(type,wholeses)
+function ML_Q = mle_predict(type,wholeses)
 
 ML_Q = cell(length(wholeses),2);
 
 for l = 1:height(wholeses)
     history = wholeses{l,2};
-    history.success = history.success(history.ses_len==max(history.ses_len));
-    history.Cue1 = history.Cue1(history.ses_len==max(history.ses_len));
-    history.Cue2 = history.Cue2(history.ses_len==max(history.ses_len));
-    history.reward = history.reward(history.ses_len==max(history.ses_len));
-    history.punish = history.punish(history.ses_len==max(history.ses_len));
-    
     %% Maximum Log Likelihood
     rn = 50; % repeat number (パラメータ初期値の生成)
     nolimit = 0; %0: fmincon, 1: fminsearch

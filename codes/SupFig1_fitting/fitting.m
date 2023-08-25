@@ -1,6 +1,6 @@
 list = dir('../../dataset/wholeses*.mat');
 tasks = {'airpuff', 'omission'};
-types = {'R', 'RC', 'RNL', 'RDF', 'RCDF', 'RNLDF', 'RCNLDF'};
+types = {'RNLDF','RCNLDF'}; %'R', 'RC', 'RNL', 'RDF', 'RCDF'
 
 for i = 1:length(list)
     for j = 1:length(types)

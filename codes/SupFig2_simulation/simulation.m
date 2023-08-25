@@ -4,7 +4,7 @@ types = {'RCNLDF', 'RNLDF'};
 
 for i = 1:length(list)
     for j = 1:length(types)
-        param = append('../../param/', string(tasks(i)), string(types(j)), '.mat');
+        param = append('../../parma/original/', string(tasks(i)), string(types(j)), '.mat');
         x = load(param);
         paramall = [];
         for t = 1:length(x.ML_Q)
