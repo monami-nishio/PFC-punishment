@@ -8,21 +8,6 @@ for l = 1:height(wholeses)
     rn = 50; % repeat number (パラメータ初期値の生成)
     nolimit = 0; %0: fmincon, 1: fminsearch
     switch type
-        case 'R' % Simple
-            f = @(x)log_likelihood(x,history,'R');
-            tpcs = 1;
-        case 'RC' % Punishment
-            f = @(x)log_likelihood(x,history,'RC');
-            tpcs = 2;
-        case 'RNL' % Saving
-            f = @(x)log_likelihood(x,history,'RNL');
-            tpcs = 3;
-        case 'RDF' % Forgetting
-            f = @(x)log_likelihood(x,history,'RDF');
-            tpcs = 4;
-        case 'RCDF' % P-F
-            f = @(x)log_likelihood(x,history,'RCDF');
-            tpcs = 5;
         case 'RNLDF' % S-F
             f = @(x)log_likelihood(x,history,'RNLDF');
             tpcs = 6;
@@ -279,8 +264,8 @@ for l = 1:height(wholeses)
             if nolimit
                 [x,fun] = fminsearch(f,x0);
             else
-                lb = [0 0 0 0 0 0];
-                ub = [1 1 Inf Inf Inf Inf Inf];
+                lb = [0 0 0 0 0];
+                ub = [1 1 Inf Inf Inf Inf];
                 [x,fun] = fmincon(f,x0,[],[],[],[],lb,ub);
             end
             if fun < ml

@@ -1,13 +1,10 @@
-% model for 2-tone pull task
-% reinforcement learning, value iteration
-% action is predicted via logistic regression
 
-function [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,initial_value,initial_value_n,alpha_l,alpha_f,lambda_e,kappa_c,kappa_r,kappa_a)
+function [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,initial_value,initial_value_n,alpha_l,alpha_f,lambda_e,kappa_c,kappa_r)
 % history: binary data, tr: percentage of training trials
 % initial_value, initial_value_n: initial Q value for pulling/no-pulling
 % alpha_l: learning rate, alpha_f: forgetting rate
 % lambda_e: saving of cost accompanying lever-pull, kappa_c: cost for pulling lever
-% kappa_r: goodness of water drop, kappa_a: aversiveness of no reward
+% kappa_r: goodness of water drop
 
 %% Initialize
 trial_tr = round(length(history.success)*tr);
@@ -26,7 +23,7 @@ action(1) = rand;
 
 %% Behavior Model
 for i = 1:trial_tr
-    Rw = kappa_r * history.reward(i) - kappa_a * (1 - history.reward(i));
+    Rw = kappa_r * history.reward(i);
     
     if history.Cue1(i) == 1
         s1 = 1; s2 = 0;

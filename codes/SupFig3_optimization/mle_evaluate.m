@@ -12,6 +12,7 @@ elseif nametofit == 'omission';
     mousemax = 7;
 end
 for l = 1:mousemax
+    disp(l)
     history = wholeses{l,2};
     rw_total = sum(history.reward);
     rs = round(rw_total*startrate/10);
@@ -42,9 +43,9 @@ for l = 1:mousemax
             tr = 1;
             for t = 1:100
                 if nametofit == 'airpuff';
-                    [action,Qp,Qn] = Q_simulate_airpuff(history,tr,x(6),x(7),x(5),x(4),x(3),x(8),x(9),x(10),x(11));
+                    [action,Qp,Qn] = Q_simulate_airpuff(history,tr,x(1),x(2),x(5),x(4),x(3),x(8),x(9),x(10),x(11));
                 elseif nametofit == 'omission';
-                    [action,Qp,Qn] = Q_simulate_omission(history,tr,x(5),x(6),x(4),0,x(3),x(8),x(9),x(10),x(11));
+                    [action,Qp,Qn] = Q_simulate_omission(history,tr,x(1),x(2),x(4),0,x(3),x(7),x(8),x(9),x(10));
                 end
                 pull = history.success;
                 rsquares = sqrt(immse(pull, action));

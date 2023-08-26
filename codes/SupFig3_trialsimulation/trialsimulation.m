@@ -1,5 +1,6 @@
 
 tasks = {'airpuff', 'omission'};
+conditions = {'acsf', 'muscimol'};
 types = {'RCNLDF', 'RNLDF'};
 
 for i = 1:length(tasks)
@@ -26,6 +27,6 @@ for i = 1:length(tasks)
                 meta_history{t,2}.punish = meta_history{t,2}.success - meta_history{t,2}.reward;
             end
         end
-        [pull, action] = mle_evaluate(types{j},paramall,meta_history,string(tasks(i)),append(string(tasks(i)),string(types(j))));
+        [pull, action] = mle_evaluate(types{j},paramall,meta_history,string(tasks(i)),append(string(tasks(i)),string(conditions(j))));
     end
 end

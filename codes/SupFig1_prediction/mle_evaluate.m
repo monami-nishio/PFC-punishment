@@ -17,30 +17,10 @@ for l = 1:height(wholeses)
     session = history.ses_len;
     tr = 1;
     switch type
-        case 'R' %'Reward' (simple)
-            [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,x(3),0,x(1),0,0,0,x(2),0);
-        case 'RF' %'Reward-Forgetting'
-            [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,x(3),0,x(1),x(1),0,0,x(2),0);
-        case 'RDF' %'Reward-DForgetting' (forgettning)
-            [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,x(4),0,x(1),x(2),0,0,x(3),0);
-        case 'RC' %'Reward-Cost' (simple cost)
-            [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,x(4),0,x(1),0,0,x(3),x(2),0);
-        case 'RCF' %'Reward-Cost-Forgetting'
-            [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,x(4),0,x(1),x(1),0,x(3),x(2),0);
-        case 'RCDF' %'Reward-Cost-DForgetting' (cost)
-            [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,x(5),0,x(1),x(2),0,x(4),x(3),0);
-        case 'RNL' %'Reward-NOP-Learning' (simple saving)
-            [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,x(4),x(5),x(1),0,x(3),0,x(2),0);
-        case 'RNLF' %'Reward-NOP-Learning-Forgetting' 
-            [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,x(4),x(5),x(1),x(1),x(3),0,x(2),0);
-        case 'RNLDF' %'Reward-NOP-Learning-DForgetting' (saving)
-            [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,x(5),x(6),x(1),x(2),x(4),0,x(3),0);
-        case 'RCNL' %'Reward-Cost_NOP-Learning'
-            [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,x(5),x(6),x(1),0,x(4),x(3),x(2),0);
-        case 'RCNLF' %'Reward-Cost_NOP-Learning-Forgetting'
-            [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,x(5),x(6),x(1),x(1),x(4),x(3),x(2),0);
-        case 'RCNLDF' %'Reward-Cost_NOP-Learning-DForgetting' (full)
-            [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,x(6),x(7),x(1),x(2),x(5),x(4),x(3),0);
+        case 'RNLDF' 
+            [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,x(5),x(6),x(1),x(2),x(4),0,x(3));
+        case 'RCNLDF' 
+            [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning(history,tr,x(6),x(7),x(1),x(2),x(5),x(4),x(3));
     end
     x(8) = cue1Q;
     x(9) = cue1Q_n;

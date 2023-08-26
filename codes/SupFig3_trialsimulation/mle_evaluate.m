@@ -22,9 +22,9 @@ for l = 1:length(wholeses)
     for j = 1:1000
         x = param_type(:,l);
         if condition == "airpuff"
-            [action] = QL_forget_simulate(history,tr,x(6),x(7),x(1),x(2),x(5),x(4),x(3),x(8),x(9),x(10),x(11));
+            [action] = QL_forget_simulate_airpuff(history,tr,x(1),x(2),x(5),x(4),x(3),x(8),x(9),x(10),x(11));
         elseif condition == "omission"
-            [action] = QL_forget_simulate_omission(history,tr,x(5),x(6),x(1),x(2),x(4),0,x(3),0,0,0,0);
+            [action] = QL_forget_simulate_omission(history,tr,x(1),x(2),x(4),0,x(3),x(7),x(8),x(9),x(10));
         end
         actionAall = [actionAall; action(history.Cue1==1)];
         actionBall = [actionBall; action(history.Cue1==0)];
@@ -75,6 +75,7 @@ for l = 1:length(wholeses)
     xticks([])
     hold off
     t=gcf;
+    export_figure_as_epsc_VectorFile(append('result/' ,savefilename))
 end
 
 
