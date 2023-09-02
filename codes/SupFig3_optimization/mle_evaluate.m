@@ -12,7 +12,6 @@ elseif nametofit == 'omission';
     mousemax = 7;
 end
 for l = 1:mousemax
-    disp(l)
     history = wholeses{l,2};
     rw_total = sum(history.reward);
     rs = round(rw_total*startrate/10);

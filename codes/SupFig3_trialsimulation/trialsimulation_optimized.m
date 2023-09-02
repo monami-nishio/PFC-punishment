@@ -8,14 +8,13 @@ for i = 1:length(tasks)
     x = load(param);
     originalvalues = [];
     mousenum = length(x.ML_Q);
-    for t = 1:mounsenum
+    for t = 1:mousenum
         xnew = x.ML_Q{t,2};
         xnew = struct2cell(xnew);
         xnew = cell2mat(xnew);
         originalvalues = [originalvalues xnew];
     end
     optimizedparams = append('../../param/optimized/', string(tasks(i)), string(types(i)), '.mat');
-    %optimizedparams = '/Users/monaminishio/Documents/MATLAB/modules/Fig6_optimization/optimized_param/airpuff_muscimol_historya.mat';
     x = load(optimizedparams);
     for iParam = 1:5
         optimized = originalvalues;
@@ -23,19 +22,19 @@ for i = 1:length(tasks)
             originalvalue = originalvalues(iParam,iMouse);
             muscimol_RCNLDF = x.all_rs;
             row = iParam+5*(iMouse-1);
-            tone = muscimol_RCNLDF(row,:)- muscimol_RCNLDF(row,101);
+            tone = muscimol_RCNLDF(row,:)- muscimol_RCNLDF(row,201);
             if iParam < 3
                 minvalue = ceil(originalvalue/0.01);
                 maxvalue = ceil((1-originalvalue)/0.01);
-                tone = tone(101-minvalue:101+maxvalue);
+                tone = tone(201-minvalue:201+maxvalue);
                 gap = (-minvalue+find(tone==min(tone)))*0.01;
             else
                 minvalue = ceil(originalvalue/0.1);
                 maxvalue = ceil((20-originalvalue)/0.1);
-                if minvalue > 101
+                if minvalue > 201
                     tone = tone;
                 else
-                    tone = tone(101-minvalue:101+maxvalue);
+                    tone = tone(201-minvalue:201+maxvalue);
                 end
                 gap = (-minvalue+find(tone==min(tone)))*0.1;
             end

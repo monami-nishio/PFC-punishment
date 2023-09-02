@@ -10,7 +10,7 @@ for i = 1:length(list)
         x = load(param);
         [pull,action,ml] = mle_evaluate(types{j},x,wholeses.wholeses,string(tasks(i)));
         ML_Q = ml.ML_Q;
-        save(append('result/', string(tasks(i)), string(types(j))),'ML_Q')
+        save(append('../../param/original/', string(tasks(i)), string(types(j))),'ML_Q')
     end
 end
 

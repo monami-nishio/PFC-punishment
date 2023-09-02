@@ -75,7 +75,7 @@ for l = 1:length(wholeses)
     xticks([])
     hold off
     t=gcf;
-    export_figure_as_epsc_VectorFile(append('result/' ,savefilename))
+    export_figure_as_epsc_VectorFile(append('../../result/' ,savefilename))
 end
 
 
