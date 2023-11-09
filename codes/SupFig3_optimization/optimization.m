@@ -24,5 +24,5 @@ for i = 1:length(tasks)
             wholeses{t,2}.punish = wholeses{t,2}.success - wholeses{t,2}.reward;
         end
     end
-    [pull, action] = mle_evaluate(types{i},paramall,wholeses,string(tasks(i)));
+    [pull, action] = mle_evaluate_optimization(types{i},paramall,wholeses,string(tasks(i)));
 end

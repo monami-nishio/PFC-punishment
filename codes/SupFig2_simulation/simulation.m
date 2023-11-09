@@ -24,7 +24,7 @@ for i = 1:length(list)
                 wholeses{t,2}.punish = wholeses{t,2}.success - wholeses{t,2}.reward;
             end
         end
-        [pull, action] = mle_evaluate(types{j},paramall,wholeses,append(string(tasks(i)),string(types(j))));
+        [pull, action] = mle_evaluate_simulation(types{j},paramall,wholeses,append(string(tasks(i)),string(types(j))));
     end
 end
  

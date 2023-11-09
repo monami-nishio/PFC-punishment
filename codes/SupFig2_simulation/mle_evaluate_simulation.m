@@ -1,4 +1,4 @@
-function [pull, action] = mle_evaluate(type,param_type,wholeses,nametofit)
+function [pull, action] = mle_evaluate_simulation(type,param_type,wholeses,nametofit)
 % max likelihood estimation
 % for Qlearning
 %%

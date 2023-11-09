@@ -1,10 +1,12 @@
-function [pull, action] = mle_evaluate(type,param_type,wholeses,condition,savefilename)
+function [pull, action] = mle_evaluate_trialsimulation(type,param_type,wholeses,condition,savefilename)
 
 startrate = 0;
-endrate = 6;
+endrate =  6;
 
 t = tiledlayout(length(wholeses),2);
 tr = 1;
+pullAall = [];
+pullBall = [];
 for l = 1:length(wholeses)
     history = wholeses{l,2};
     rw_total = sum(history.reward);
@@ -32,6 +34,8 @@ for l = 1:length(wholeses)
     pull = history.success;
     pullA = pull(history.Cue1==1);
     pullB = pull(history.Cue1==0);
+    pullAall = [pullAall mean(pullA)];
+    pullBall = [pullBall mean(pullB)];
     pullAmean = [];
     pullBmean = [];
     actionAmean = [];
@@ -77,5 +81,7 @@ for l = 1:length(wholeses)
     t=gcf;
     export_figure_as_epsc_VectorFile(append('../../result/' ,savefilename))
 end
+disp(mean(pullAall))
+disp(mean(pullBall))
 
 

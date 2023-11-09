@@ -1,4 +1,4 @@
-function [pull, action] = mle_evaluate(type,param_type,wholeses,nametofit)
+function [pull, action] = mle_evaluate_optimization(type,param_type,wholeses,nametofit)
 %%
 var = [-2:0.01:2; -2:0.01:2; -20:0.1:20; -20:0.1:20; -20:0.1:20];
 
