@@ -1,10 +1,12 @@
 
+addpath(['..', filesep, '..', filesep, 'scripts'])
+
 tasks = {'airpuff', 'omission'};
 types = {'RCNLDF', 'RNLDF'};
 
 for i = 1:length(tasks)
-    list = dir(append('../../dataset/', string(tasks(i)), '*.mat'));
-    param = append('../../param/original/', string(tasks(i)), string(types(i)), '.mat');
+    list = dir(append('..', filesep, '..', filesep, 'dataset', filesep, string(tasks(i)), '*.mat'));
+    param = append('..', filesep, '..', filesep, 'param', filesep , 'original', filesep, string(tasks(i)), string(types(i)), '.mat');
     x = load(param);
     paramall = [];
     for t = 1:length(x.ML_Q)
