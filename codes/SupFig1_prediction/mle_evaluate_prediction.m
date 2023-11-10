@@ -78,6 +78,6 @@ for l = 1:height(wholeses)
     ml.ML_Q{t,2} = max_lkh;
     t = t+1;
 end
-figurename = append('../../result/' ,nametofit, type);
+figurename = append('..', filesep, '..', filesep, 'result' ,nametofit, type);
 gcf = f;
 export_figure_as_epsc_VectorFile(figurename)
