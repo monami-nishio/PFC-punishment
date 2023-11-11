@@ -2,7 +2,7 @@ function [pull, action] = mle_evaluate_trialsimulation(type,param_type,wholeses,
 
 startrate = 0;
 endrate =  6;
-
+figure('Position', [100 100 250 100*length(wholeses)])
 t = tiledlayout(length(wholeses),2);
 tr = 1;
 pullAall = [];
@@ -62,8 +62,11 @@ for l = 1:length(wholeses)
     h = fill([1:length(upper) fliplr(1:length(upper))],[lower fliplr(upper)],[0.8500 0.3250 0.0980]);
     set(h,'facealpha',.5)
     ylim([0,1])
-    yticks([])
-    xticks([])
+    yticks([0,1])
+    ylabel('Pull choice')
+    xlabel('Trials')
+    xlim([0,length(actionAmean)])
+    xticks([1,length(actionAmean)])
     hold off
     nexttile
     plot(pullBmean,'Color', [0.3010 0.7450 0.9330],'LineWidth',1)
@@ -75,13 +78,12 @@ for l = 1:length(wholeses)
     h = fill([1:length(upper) fliplr(1:length(upper))],[lower fliplr(upper)],[0 0.4470 0.7410]);
     set(h,'facealpha',.5)
     ylim([0,1])
-    yticks([])
-    xticks([])
+    yticks([0,1])
+    ylabel('Pull choice')
+    xlabel('Trials')
+    xlim([0,length(actionBmean)])
+    xticks([1,length(actionBmean)])
     hold off
-    t=gcf;
-    export_figure_as_epsc_VectorFile(append('..', filesep, '..', filesep, 'result', filesep , savefilename))
 end
-disp(mean(pullAall))
-disp(mean(pullBall))
 
 

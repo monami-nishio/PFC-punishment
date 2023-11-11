@@ -1,7 +1,8 @@
 
-addpath(['..', filesep, '..', filesep, 'scripts'])
+addpath(['..', filesep, 'scripts'])
+addpath(['..', filesep, 'scripts', filesep,'SupFig1_fitting'])
 
-list = dir(['..', filesep, '..', filesep, 'dataset', filesep , 'wholeses*.mat']);
+list = dir(['..', filesep, 'dataset', filesep , 'wholeses*.mat']);
 tasks = {'airpuff', 'omission'};
 types = {'RNLDF','RCNLDF'}; 
 

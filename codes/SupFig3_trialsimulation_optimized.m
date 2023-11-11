@@ -1,13 +1,14 @@
 
-addpath(['..', filesep, '..', filesep, 'scripts'])
+addpath(['..', filesep, 'scripts'])
+addpath(['..', filesep, 'scripts', filesep,'SupFig3_trialsimulation'])
 
 tasks = {'airpuff', 'omission'};
 conditions = {'acsf', 'muscimol'};
 types = {'RCNLDF', 'RNLDF'};
 
 for i = 1:length(tasks)
-    list = dir(append('..', filesep, '..', filesep, 'dataset', filesep, string(tasks(i)), '*.mat'));
-    param = append('..', filesep, '..', filesep, 'param', filesep, 'original', filesep, string(tasks(i)), string(types(i)), '.mat');
+    list = dir(append('..', filesep, 'dataset', filesep, string(tasks(i)), '*.mat'));
+    param = append('..', filesep, 'param', filesep, 'original', filesep, string(tasks(i)), string(types(i)), '.mat');
     x = load(param);
     originalvalues = [];
     mousenum = length(x.ML_Q);
@@ -25,7 +26,7 @@ for i = 1:length(tasks)
         originalvalues = [originalvalues xnew];
     end
     for j = 1:length(list)
-        optimizedparams = append('..', filesep, '..', filesep, 'param', filesep, 'optimized', filesep, string(tasks(i)), string(types(i)), string(conditions(j)), '.mat');
+        optimizedparams = append('..', filesep, 'param', filesep, 'optimized', filesep, string(tasks(i)), string(types(i)), string(conditions(j)), '.mat');
         x = load(optimizedparams);
         for iParam = 1:nParam
             optimized = originalvalues;

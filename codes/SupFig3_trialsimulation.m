@@ -1,13 +1,14 @@
 
-addpath(['..', filesep, '..', filesep, 'scripts'])
+addpath(['..', filesep, 'scripts'])
+addpath(['..', filesep, 'scripts', filesep,'SupFig3_trialsimulation'])
 
 tasks = {'airpuff', 'omission'};
 conditions = {'acsf', 'muscimol'};
 types = {'RCNLDF', 'RNLDF'};
 
 for i = 1:length(tasks)
-    list = dir(append('..', filesep, '..', filesep, 'dataset', filesep, string(tasks(i)), '*.mat'));
-    param = append('..', filesep, '..', filesep, 'param', filesep, 'original', filesep, string(tasks(i)), string(types(i)), '.mat');
+    list = dir(append('..', filesep, 'dataset', filesep, string(tasks(i)), '*.mat'));
+    param = append('..', filesep, 'param', filesep, 'original', filesep, string(tasks(i)), string(types(i)), '.mat');
     x = load(param);
     paramall = [];
     for t = 1:length(x.ML_Q)

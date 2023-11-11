@@ -1,13 +1,14 @@
 
-addpath(['..', filesep, '..', filesep, 'scripts'])
+addpath(['..', filesep, 'scripts'])
+addpath(['..', filesep, 'scripts', filesep,'SupFig2_simulation'])
 
-list = dir(['..', filesep, '..', filesep, 'dataset', filesep , 'wholeses*.mat']);
+list = dir(['..', filesep, 'dataset', filesep , 'wholeses*.mat']);
 tasks = {'airpuff', 'omission'};
 types = {'RCNLDF', 'RNLDF'};
 
 for i = 1:length(list)
     for j = 1:length(types)
-        param = append('..', filesep, '..', filesep, 'param', filesep , 'original', filesep, string(tasks(i)), string(types(j)), '.mat');
+        param = append('..', filesep, 'param', filesep , 'original', filesep, string(tasks(i)), string(types(j)), '.mat');
         x = load(param);
         paramall = [];
         for t = 1:length(x.ML_Q)

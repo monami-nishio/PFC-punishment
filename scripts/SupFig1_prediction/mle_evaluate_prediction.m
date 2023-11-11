@@ -1,4 +1,4 @@
-function [pull, action,ml] = mle_evaluate_prediction(type,param_type,wholeses,nametofit)
+function [pull, action,ml] = mle_evaluate_prediction(type,param_type,wholeses,nametofit,i)
 % max likelihood estimation
 % for Q_learning
 
@@ -7,8 +7,9 @@ all_pullA = zeros(200,length(wholeses));
 all_actionA = zeros(200,length(wholeses));
 all_pullB = zeros(200,length(wholeses));
 all_actionB = zeros(200,length(wholeses));
-f = tiledlayout(length(wholeses),2,'TileSpacing','Compact','Padding','Compact');
 t = 1;
+figure('Position', [100 100 500 100*length(wholeses)])
+f = tiledlayout(length(wholeses),2,'TileSpacing','Compact','Padding','Compact');
 for l = 1:height(wholeses)
     history = wholeses{l,2};
     x = struct2cell(param_type.ML_Q{l,2});
@@ -58,19 +59,34 @@ for l = 1:height(wholeses)
     nexttile
     plot(pullAmean, 'Color',[0.9290 0.6940 0.1250],'LineWidth',2)
     hold on 
-    plot((sessionA-min(sessionA))/(max(sessionA)-min(sessionA)))
+    session_change = find((sessionA - [1 sessionA(1:length(sessionA)-1)])==1);
+    for change = 2:2:(length(session_change)-1)
+        a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
+        a.FaceAlpha = 0.2;
+    end
     ylim([0,1])
-    yticks([])
+    yticks([0,1])
+    ylabel('Pa,pull')
+    xlabel('Trial over training sessions')
     plot(actionAmean, 'Color',[0.8500 0.3250 0.0980],'LineWidth',2)
     xlim([0,length(actionAmean)])
+    xticks([1,length(actionAmean)])
     hold off
     nexttile
     plot(pullBmean,'Color', [0.3010 0.7450 0.9330],'LineWidth',2)
     hold on 
-    plot((sessionB-min(sessionB))/(max(sessionB)-min(sessionB)))
+    session_change = find((sessionB - [1 sessionB(1:length(sessionB)-1)])==1);
+    for change = 2:2:(length(session_change)-1)
+        a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
+        a.FaceAlpha = 0.2;
+    end
     plot(actionBmean,'Color', [0 0.4470 0.7410],'LineWidth',2)
     ylim([0,1])
-    yticks([])
+    yticks([0,1])
+    ylabel('Pb,pull')
+    xlabel('Trial over training sessions')
+    xlim([0,length(actionBmean)])
+    xticks([1,length(actionBmean)])
     hold off
     max_lkh.Q1 = cue1Q;
     max_lkh.Qn1 = cue1Q_n;
@@ -80,6 +96,3 @@ for l = 1:height(wholeses)
     ml.ML_Q{t,2} = max_lkh;
     t = t+1;
 end
-figurename = append('..', filesep, '..', filesep, 'result', filesep, nametofit, type);
-gcf = f;
-export_figure_as_epsc_VectorFile(figurename)

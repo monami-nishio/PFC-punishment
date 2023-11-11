@@ -1,10 +1,12 @@
 
-addpath(['..', filesep, '..', filesep, 'scripts'])
+addpath(['..', filesep, 'scripts'])
+addpath(['..', filesep, 'scripts', filesep,'SupFig1_fitting'])
 
-airpuff = load(['..', filesep, '..', filesep, 'param', filesep , 'original', filesep , 'airpuffRCNLDF.mat']);
-omission = load(['..', filesep, '..', filesep, 'param', filesep , 'original', filesep , 'omissionRNLDF.mat']);
+airpuff = load(['..', filesep, 'param', filesep , 'original', filesep , 'airpuffRCNLDF.mat']);
+omission = load(['..', filesep, 'param', filesep , 'original', filesep , 'omissionRNLDF.mat']);
 sz=100;
 
+f1 = figure;
 airpuffalpha_l = [];
 for i =1:5
    airpuff_params = airpuff.ML_Q{i,2};
@@ -27,9 +29,10 @@ ylim([0,1])
 xlim([0,3])
 xticks([0 1 2 3])
 xticklabels({'', 'Airpuff', 'Omission', ''})
-export_figure_as_epsc_VectorFile(['..', filesep, '..', filesep, 'result', filesep, 'alpha_l'])
+ylabel({'αl'})
 hold off
 
+f2 = figure;
 airpuffalpha_f= [];
 for i =1:5
    airpuff_params = airpuff.ML_Q{i,2};
@@ -52,9 +55,10 @@ ylim([0,1])
 xlim([0,3])
 xticks([0 1 2 3])
 xticklabels({'', 'Airpuff', 'Omission', ''})
-export_figure_as_epsc_VectorFile(['..', filesep, '..', filesep, 'result', filesep, 'alpha_f'])
+ylabel({'αf'})
 hold off
 
+f3 = figure;
 airpuffkappa_r= [];
 for i =1:5
    airpuff_params = airpuff.ML_Q{i,2};
@@ -77,9 +81,10 @@ ylim([0,10])
 xlim([0,3])
 xticks([0 1 2 3])
 xticklabels({'', 'Airpuff', 'Omission', ''})
-export_figure_as_epsc_VectorFile(['..', filesep, '..', filesep, 'result', filesep, 'kappa_r'])
+ylabel({'κr'})
 hold off
 
+f4 = figure;
 airpuffkappa_c= [];
 for i =1:5
    airpuff_params = airpuff.ML_Q{i,2};
@@ -95,9 +100,10 @@ ylim([0,8])
 xlim([0,2])
 xticks([0 1 2])
 xticklabels({'', 'Airpuff', ''})
-export_figure_as_epsc_VectorFile(['..', filesep, '..', filesep, 'result', filesep, 'kappa_c'])
+ylabel({'κp'})
 hold off
 
+f5 = figure;
 airpufflambda_e = [];
 for i =1:5
    airpuff_params = airpuff.ML_Q{i,2};
@@ -120,5 +126,5 @@ ylim([0,12])
 xlim([0,3])
 xticks([0 1 2 3])
 xticklabels({'', 'Airpuff', 'Omission', ''})
-export_figure_as_epsc_VectorFile(['..', filesep, '..', filesep, 'result', filesep, 'psai'])
+ylabel({'ψ'})
 hold off
