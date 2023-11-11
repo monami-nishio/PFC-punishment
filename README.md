@@ -1,7 +1,9 @@
 # PFC-punishment
 ## How to run
 First, clone the repository and set the path.  
-
+> [!WARNING]
+> 今となってはパスを通す必要はないはず？
+> 
 To reproduce Supplementary Figure1,   
 * `codes/SupFig1_fitting/fitting.mat` will output the fitted parameters in `param/original/` folder.   
 * `codes/SupFig1_prediction/prediction.mat` will output the eps file in `result/` folder.
