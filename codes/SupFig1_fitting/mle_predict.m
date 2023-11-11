@@ -2,7 +2,7 @@ function ML_Q = mle_predict(type,wholeses)
 
 ML_Q = cell(length(wholeses),2);
 
-for l = 1:1 %height(wholeses)
+for l = 1:height(wholeses)
     history = wholeses{l,2};
     %% Maximum Log Likelihood
     rn = 50; % repeat number (パラメータ初期値の生成)

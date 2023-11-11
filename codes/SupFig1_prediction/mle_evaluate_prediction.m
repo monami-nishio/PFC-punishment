@@ -21,13 +21,22 @@ for l = 1:height(wholeses)
     switch type
         case 'RNLDF' 
             [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning_prediction(history,tr,x(5),x(6),x(1),x(2),x(4),0,x(3));
+            max_lkh.alpha_l = x(1);
+            max_lkh.alpha_f = x(2);
+            max_lkh.kappa_r = x(3);
+            max_lkh.lambda_e = x(4);
+            max_lkh.intlqp = x(5);
+            max_lkh.intlqn = x(6);
         case 'RCNLDF' 
             [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning_prediction(history,tr,x(6),x(7),x(1),x(2),x(5),x(4),x(3));
+            max_lkh.alpha_l = x(1);
+            max_lkh.alpha_f = x(2);
+            max_lkh.kappa_r = x(3);
+            max_lkh.kappa_c = x(4);
+            max_lkh.lambda_e = x(5);
+            max_lkh.intlqp = x(6);
+            max_lkh.intlqn = x(7);
     end
-    x(8) = cue1Q;
-    x(9) = cue1Q_n;
-    x(10) = cue2Q;
-    x(11) = cue2Q_n;
     pull = history.success;
     action = action>0.5;
     pullA = pull(history.Cue1==1);
@@ -63,21 +72,14 @@ for l = 1:height(wholeses)
     ylim([0,1])
     yticks([])
     hold off
-    max_lkh.alpha_l = x(1);
-    max_lkh.alpha_f = x(2);
-    max_lkh.kappa_r = x(3);
-    max_lkh.kappa_c = x(4);
-    max_lkh.lambda_e = x(5);
-    max_lkh.intlqp = x(6);
-    max_lkh.intlqn = x(7);
-    max_lkh.Q1 = x(8);
-    max_lkh.Qn1 = x(9);
-    max_lkh.Q2 = x(10);
-    max_lkh.Qn2 = x(11);
+    max_lkh.Q1 = cue1Q;
+    max_lkh.Qn1 = cue1Q_n;
+    max_lkh.Q2 = cue2Q;
+    max_lkh.Qn2 = cue2Q_n;
     ml.ML_Q{t,1} = param_type.ML_Q{l,1};
     ml.ML_Q{t,2} = max_lkh;
     t = t+1;
 end
-figurename = append('..', filesep, '..', filesep, 'result' ,nametofit, type);
+figurename = append('..', filesep, '..', filesep, 'result', filesep, nametofit, type);
 gcf = f;
 export_figure_as_epsc_VectorFile(figurename)

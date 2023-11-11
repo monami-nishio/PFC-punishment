@@ -64,5 +64,5 @@ for l = 1:mousemax
     all_rs = [all_rs; var_rs];
     all_Q = [all_Q; var_Q];
 end
-save(append('..', filesep, '..', 'param', filesep, 'optimized', filesep, nametofit, string(type),'.mat'), 'all_rs', 'all_Q')    
+save(append('..', filesep, '..', 'result', filesep, nametofit, string(type),'.mat'), 'all_rs', 'all_Q')    
 end

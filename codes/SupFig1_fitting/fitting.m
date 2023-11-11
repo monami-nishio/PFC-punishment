@@ -10,6 +10,6 @@ for i = 1:length(list)
         nametofit = append(list(i).folder, '/', list(i).name);
         wholeses = load(nametofit);
         ML_Q = mle_predict(types{j},wholeses.wholeses);
-        save(append('..', filesep, '..', filesep, 'param', filesep , 'original', filesep, string(tasks(i)), string(types(j))),'ML_Q')
+        save(append('..', filesep, '..', filesep, 'result', filesep , string(tasks(i)), string(types(j))),'ML_Q')
     end
 end
