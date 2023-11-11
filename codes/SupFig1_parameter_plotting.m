@@ -6,7 +6,7 @@ airpuff = load(['..', filesep, 'param', filesep , 'original', filesep , 'airpuff
 omission = load(['..', filesep, 'param', filesep , 'original', filesep , 'omissionRNLDF.mat']);
 sz=100;
 
-f1 = figure;
+f1 = figure('Position', [100 100 300 500]);
 airpuffalpha_l = [];
 for i =1:5
    airpuff_params = airpuff.ML_Q{i,2};
@@ -32,7 +32,7 @@ xticklabels({'', 'Airpuff', 'Omission', ''})
 ylabel({'αl'})
 hold off
 
-f2 = figure;
+f2 = figure('Position', [100 100 300 500]);
 airpuffalpha_f= [];
 for i =1:5
    airpuff_params = airpuff.ML_Q{i,2};
@@ -58,7 +58,7 @@ xticklabels({'', 'Airpuff', 'Omission', ''})
 ylabel({'αf'})
 hold off
 
-f3 = figure;
+f3 = figure('Position', [100 100 300 500]);
 airpuffkappa_r= [];
 for i =1:5
    airpuff_params = airpuff.ML_Q{i,2};
@@ -84,7 +84,7 @@ xticklabels({'', 'Airpuff', 'Omission', ''})
 ylabel({'κr'})
 hold off
 
-f4 = figure;
+f4 = figure('Position', [100 100 200 500]);
 airpuffkappa_c= [];
 for i =1:5
    airpuff_params = airpuff.ML_Q{i,2};
@@ -103,7 +103,7 @@ xticklabels({'', 'Airpuff', ''})
 ylabel({'κp'})
 hold off
 
-f5 = figure;
+f5 = figure('Position', [100 100 300 500]);
 airpufflambda_e = [];
 for i =1:5
    airpuff_params = airpuff.ML_Q{i,2};
