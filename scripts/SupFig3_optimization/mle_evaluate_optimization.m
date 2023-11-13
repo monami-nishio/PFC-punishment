@@ -1,4 +1,4 @@
-function [pull, action] = mle_evaluate_optimization(type,param_type,wholeses,nametofit)
+function [pull, action] = mle_evaluate_optimization(type,param_type,wholeses,nametofit,condition)
 %%
 var = [-2:0.01:2; -2:0.01:2; -20:0.1:20; -20:0.1:20; -20:0.1:20];
 
@@ -50,10 +50,6 @@ for l = 1:mousemax
                 rsquares = sqrt(immse(pull, action));
                 part_rs = [part_rs rsquares];
                 part_Q = [part_Q; [Qp(1,1) Qp(2,1) Qn(1,1) Qn(2,1) Qp(1,length(Qp)) Qp(2,length(Qp)) Qn(1,length(Qn)) Qn(2,length(Qn))]];
-                plot(Qp(1,:))
-                hold on
-                plot(Qn(1,:))
-                hold off
             end
             whole_rs = [whole_rs mean(part_rs)];
             whole_Q = [whole_Q mean(part_Q)];
@@ -64,5 +60,5 @@ for l = 1:mousemax
     all_rs = [all_rs; var_rs];
     all_Q = [all_Q; var_Q];
 end
-save(append('..', filesep, '..', 'result', filesep, nametofit, string(type),'.mat'), 'all_rs', 'all_Q')    
+save(append('..', filesep, 'result', filesep, nametofit, type, condition, '.mat'), 'all_rs', 'all_Q')    
 end

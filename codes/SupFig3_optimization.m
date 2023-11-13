@@ -4,6 +4,7 @@ addpath(['..', filesep, 'scripts', filesep,'SupFig3_optimization'])
 
 tasks = {'airpuff', 'omission'};
 types = {'RCNLDF', 'RNLDF'};
+conditions =  {'acsf', 'muscimol'};
 
 for i = 1:length(tasks)
     list = dir(append('..', filesep, 'dataset', filesep, string(tasks(i)), '*.mat'));
@@ -16,16 +17,18 @@ for i = 1:length(tasks)
         xnew = cell2mat(xnew);
         paramall = [paramall xnew];
     end
-    nametofit = append(list(i).folder, '/', list(i).name);
-    wholeses = load(nametofit).meta_history;
-    if i==1
-        for t = 1:height(wholeses)
-            wholeses{t,2}.punish = wholeses{t,2}.airpuff;
+    for j = 2:length(list)
+        nametofit = append(list(j).folder, '/', list(j).name);
+        wholeses = load(nametofit).meta_history;
+        if i==1
+            for t = 1:height(wholeses)
+                wholeses{t,2}.punish = wholeses{t,2}.airpuff;
+            end
+        elseif i==2
+            for t = 1:height(wholeses)
+                wholeses{t,2}.punish = wholeses{t,2}.success - wholeses{t,2}.reward;
+            end
         end
-    elseif i==2
-        for t = 1:height(wholeses)
-            wholeses{t,2}.punish = wholeses{t,2}.success - wholeses{t,2}.reward;
-        end
+        [pull, action] = mle_evaluate_optimization(types{i},paramall,wholeses,string(tasks(i)),string(conditions(j)));
     end
-    [pull, action] = mle_evaluate_optimization(types{i},paramall,wholeses,string(tasks(i)));
 end

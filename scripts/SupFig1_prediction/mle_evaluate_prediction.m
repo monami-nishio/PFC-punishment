@@ -69,8 +69,9 @@ for l = 1:height(wholeses)
     ylabel('Pa,pull')
     xlabel('Trial over training sessions')
     plot(actionAmean, 'Color',[0.8500 0.3250 0.0980],'LineWidth',2)
-    xlim([0,length(actionAmean)])
+    xlim([1,length(actionAmean)])
     xticks([1,length(actionAmean)])
+    xticklabels({1,length(actionAmean)+10})
     hold off
     nexttile
     plot(pullBmean,'Color', [0.3010 0.7450 0.9330],'LineWidth',2)
@@ -85,8 +86,9 @@ for l = 1:height(wholeses)
     yticks([0,1])
     ylabel('Pb,pull')
     xlabel('Trial over training sessions')
-    xlim([0,length(actionBmean)])
+    xlim([1,length(actionBmean)])
     xticks([1,length(actionBmean)])
+    xticklabels({1,length(actionBmean)+10})
     hold off
     max_lkh.Q1 = cue1Q;
     max_lkh.Qn1 = cue1Q_n;

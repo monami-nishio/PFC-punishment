@@ -12,11 +12,10 @@ for i = 1:length(tasks)
     x = load(param);
     originalvalues = [];
     mousenum = length(x.ML_Q);
+    mid = 201;
     if i == 1
-        mid = 101;
         nParam = 5;
     else
-        mid = 201;
         nParam = 4;
     end
     for t = 1:mousenum
@@ -43,7 +42,7 @@ for i = 1:length(tasks)
                 else
                     minvalue = ceil(originalvalue/0.1);
                     maxvalue = ceil((20-originalvalue)/0.1);
-                    tone = tone(mid-minvalue:201); %mid+maxvalue);
+                    tone = tone(mid-minvalue:mid+maxvalue);
                     gap = (-minvalue+find(tone==min(tone)))*0.1;
                 end
                 optimized(iParam,iMouse) = optimized(iParam,iMouse)+gap;
