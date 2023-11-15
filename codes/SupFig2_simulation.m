@@ -4,9 +4,11 @@ addpath(['..', filesep, 'scripts', filesep,'SupFig2_simulation'])
 
 list = dir(['..', filesep, 'dataset', filesep , 'wholeses*.mat']);
 tasks = {'airpuff', 'omission'};
-types = {'RCNLDF', 'RNLDF'};
+types = {'SF', 'SFP'};
 
+figid = 1;
 for i = 1:length(list)
+    rmseall = [];
     for j = 1:length(types)
         param = append('..', filesep, 'param', filesep , 'original', filesep, string(tasks(i)), string(types(j)), '.mat');
         x = load(param);
@@ -28,7 +30,27 @@ for i = 1:length(list)
                 wholeses{t,2}.punish = wholeses{t,2}.success - wholeses{t,2}.reward;
             end
         end
-        [pull, action] = mle_evaluate_simulation(types{j},paramall,wholeses,append(string(tasks(i)),string(types(j))));
+        [pull, action, rmse] = mle_evaluate_simulation(types{j},paramall,wholeses,append(string(tasks(i)),string(types(j))),figid);
+        figid = figid+1;
+        rmseall = [rmseall; rmse];
     end
+    if i == 1
+        figure('Position', [100 100 200 500], 'Name','Figure 3C');
+    else
+        figure('Position', [100 100 200 500], 'Name','Figure 3F');
+    end
+    for mice=1:t
+        plot([rmseall(1,mice) rmseall(2,mice)], 'k')
+        hold on
+    end
+    scatter([ones(t) repmat(2,t)], [rmseall(1,:) rmseall(2,:)], 'k')
+    ax = gca;
+    ax.XAxis.FontSize = 20;
+    ax.YAxis.FontSize = 20;
+    ylim([0,0.7])
+    xlim([0,3])
+    xticks([0 1 2 3])
+    xticklabels({'', 'S-F', 'P-S-F', ''})
+    hold off
 end
  

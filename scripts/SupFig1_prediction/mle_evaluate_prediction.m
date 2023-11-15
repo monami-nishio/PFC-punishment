@@ -1,14 +1,21 @@
-function [pull, action,ml] = mle_evaluate_prediction(type,param_type,wholeses,nametofit,i)
+function [pull, action,ml] = mle_evaluate_prediction(type,param_type,wholeses,nametofit,figid)
 % max likelihood estimation
 % for Q_learning
+% rng(4)
 
+fignames = ['A' 'B' 'C' 'D'];
+if figid < 3
+    mouseid='AM';
+else
+    mouseid='OM';
+end
 %%
 all_pullA = zeros(200,length(wholeses));
 all_actionA = zeros(200,length(wholeses));
 all_pullB = zeros(200,length(wholeses));
 all_actionB = zeros(200,length(wholeses));
 t = 1;
-figure('Position', [100 100 500 100*length(wholeses)])
+figure('Position', [100 100 500 120*length(wholeses)], 'Name',strcat('Supplementary Figure 1',fignames(figid)))
 f = tiledlayout(length(wholeses),2,'TileSpacing','Compact','Padding','Compact');
 for l = 1:height(wholeses)
     history = wholeses{l,2};
@@ -20,7 +27,7 @@ for l = 1:height(wholeses)
     sessionB = sessions(history.Cue1==0);
     tr = 1;
     switch type
-        case 'RNLDF' 
+        case 'SF' 
             [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning_prediction(history,tr,x(5),x(6),x(1),x(2),x(4),0,x(3));
             max_lkh.alpha_l = x(1);
             max_lkh.alpha_f = x(2);
@@ -28,7 +35,7 @@ for l = 1:height(wholeses)
             max_lkh.lambda_e = x(4);
             max_lkh.intlqp = x(5);
             max_lkh.intlqn = x(6);
-        case 'RCNLDF' 
+        case 'SFP' 
             [cue1Q,cue1Q_n,cue2Q,cue2Q_n,action] = Q_learning_prediction(history,tr,x(6),x(7),x(1),x(2),x(5),x(4),x(3));
             max_lkh.alpha_l = x(1);
             max_lkh.alpha_f = x(2);
@@ -57,8 +64,9 @@ for l = 1:height(wholeses)
         actionBmean = [actionBmean mean(actionB(i:i+10))];
     end
     nexttile
-    plot(pullAmean, 'Color',[0.9290 0.6940 0.1250],'LineWidth',2)
+    title(strcat(mouseid, string(l)))
     hold on 
+    plot(pullAmean, 'Color',[0.9290 0.6940 0.1250],'LineWidth',2)
     session_change = find((sessionA - [1 sessionA(1:length(sessionA)-1)])==1);
     for change = 2:2:(length(session_change)-1)
         a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
@@ -74,8 +82,9 @@ for l = 1:height(wholeses)
     xticklabels({1,length(actionAmean)+10})
     hold off
     nexttile
-    plot(pullBmean,'Color', [0.3010 0.7450 0.9330],'LineWidth',2)
-    hold on 
+    title(strcat(mouseid, string(l)))
+    hold on
+    plot(pullBmean,'Color', [0.3010 0.7450 0.9330],'LineWidth',2) 
     session_change = find((sessionB - [1 sessionB(1:length(sessionB)-1)])==1);
     for change = 2:2:(length(session_change)-1)
         a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");

@@ -4,9 +4,9 @@ tr = 1;
 pull = history.success;
 
 switch type 
-    case 'RNLDF' % S-F
+    case 'SF' 
         [~,~,action] = Q_learning_fitting(history,tr,x(5),x(6),x(1),x(2),x(4),0,x(3));
-    case 'RCNLDF' % P-S-F
+    case 'SFP'
         [~,~,action] = Q_learning_fitting(history,tr,x(6),x(7),x(1),x(2),x(5),x(4),x(3));
 end
 

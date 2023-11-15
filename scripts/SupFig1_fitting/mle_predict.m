@@ -8,11 +8,11 @@ for l = 1:height(wholeses)
     rn = 50; % repeat number (パラメータ初期値の生成)
     nolimit = 0; %0: fmincon, 1: fminsearch
     switch type
-        case 'RNLDF' % S-F
-            f = @(x)log_likelihood(x,history,'RNLDF');
+        case 'SF'
+            f = @(x)log_likelihood(x,history,'SF');
             tpcs = 6;
-        case 'RCNLDF' % P-S-F
-            f = @(x)log_likelihood(x,history,'RCNLDF');
+        case 'PSF'
+            f = @(x)log_likelihood(x,history,'SFP');
             tpcs = 7;
     end
     

@@ -1,5 +1,6 @@
 function [pull, action] = mle_evaluate_optimization(type,param_type,wholeses,nametofit,condition)
 %%
+% rng(4)
 var = [-2:0.01:2; -2:0.01:2; -20:0.1:20; -20:0.1:20; -20:0.1:20];
 
 all_rs = [];

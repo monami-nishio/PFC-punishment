@@ -1,8 +1,15 @@
-function [pull, action] = mle_evaluate_trialsimulation(type,param_type,wholeses,condition,savefilename)
+function [pull, action] = mle_evaluate_trialsimulation(type,param_type,wholeses,condition,savefilename, figid)
+% rng(4)
 
+fignames = ['B' 'C' 'E' 'F'];
+if figid < 3
+    mouseid='AM';
+else
+    mouseid='OM';
+end
 startrate = 0;
 endrate =  6;
-figure('Position', [100 100 250 100*length(wholeses)])
+figure('Position', [100 100 250 120*length(wholeses)], 'Name',strcat('Supplementary Figure 3',fignames(figid)))
 t = tiledlayout(length(wholeses),2);
 tr = 1;
 pullAall = [];
@@ -53,8 +60,9 @@ for l = 1:length(wholeses)
         actionBsem = [actionBsem std(reshape(actionBall(:,i:i+10), 1,[]))/sqrt(10)];
     end
     nexttile
-    plot(pullAmean, 'Color',[0.9290 0.6940 0.1250],'LineWidth',1)
+    title(strcat(mouseid, string(l)))
     hold on 
+    plot(pullAmean, 'Color',[0.9290 0.6940 0.1250],'LineWidth',1)
     upper = actionAmean + actionAsem;
     lower = actionAmean - actionAsem;
     plot(actionAmean, 'Color', [0.8500 0.3250 0.0980],'LineWidth',1)
@@ -70,8 +78,9 @@ for l = 1:length(wholeses)
     xticklabels({1,length(actionAmean)+10})
     hold off
     nexttile
-    plot(pullBmean,'Color', [0.3010 0.7450 0.9330],'LineWidth',1)
+    title(strcat(mouseid, string(l)))
     hold on 
+    plot(pullBmean,'Color', [0.3010 0.7450 0.9330],'LineWidth',1) 
     upper = actionBmean + actionBsem;
     lower = actionBmean - actionBsem;
     plot(actionBmean, 'Color', [0 0.4470 0.7410],'LineWidth',1)

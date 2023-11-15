@@ -3,7 +3,7 @@ addpath(['..', filesep, 'scripts'])
 addpath(['..', filesep, 'scripts', filesep,'SupFig3_optimization'])
 
 tasks = {'airpuff', 'omission'};
-types = {'RCNLDF', 'RNLDF'};
+types = {'SFP', 'SF'};
 conditions =  {'acsf', 'muscimol'};
 
 for i = 1:length(tasks)

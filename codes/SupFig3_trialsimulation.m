@@ -4,8 +4,9 @@ addpath(['..', filesep, 'scripts', filesep,'SupFig3_trialsimulation'])
 
 tasks = {'airpuff', 'omission'};
 conditions = {'acsf', 'muscimol'};
-types = {'RCNLDF', 'RNLDF'};
+types = {'SFP', 'SF'};
 
+figid = 1;
 for i = 1:length(tasks)
     list = dir(append('..', filesep, 'dataset', filesep, string(tasks(i)), '*.mat'));
     param = append('..', filesep, 'param', filesep, 'original', filesep, string(tasks(i)), string(types(i)), '.mat');
@@ -30,6 +31,7 @@ for i = 1:length(tasks)
                 meta_history{t,2}.punish = meta_history{t,2}.success - meta_history{t,2}.reward;
             end
         end
-        [pull, action] = mle_evaluate_trialsimulation(types{j},paramall,meta_history,string(tasks(i)),append(string(tasks(i)),string(conditions(j))));
+        [pull, action] = mle_evaluate_trialsimulation(types{j},paramall,meta_history,string(tasks(i)),append(string(tasks(i)),string(conditions(j))),figid);
+        figid = figid+1;
     end
 end
