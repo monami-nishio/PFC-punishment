@@ -3,35 +3,15 @@
 First, clone this repository.  
 
 To reproduce Supplementary Figure1,   
-* `codes/SupFig1_fitting.mat` will output the fitted parameters.
-* `codes/SupFig1_parameter_plotting.mat` will output plotted figures of fitted parameters.  
-* `codes/SupFig1_prediction.mat` will output plotted figures of prediction results.
+* `codes/SupFig1_fitting.mat` repeats fitting 100 times and plots the fitted parameters.
+* `codes/SupFig1_fitting_result_aggregation.mat` aggregates 100 fitting results and extracts the median value for each parameter.
+* `codes/SupFig1_parameter_plotting.mat` plots fitted parameters.  
+* `codes/SupFig1_prediction.mat` plots prediction results.
   
 To reproduce Supplementary Figure2,  
-* `codes/SupFig2_simulation.mat` will output plotted figures of simulation results.
+* `codes/SupFig2_simulation.mat` repeats simulation 1000 times and output plotted figures of simulation results and RMSE averaged across 1000 simulation results.
 
 To reproduce Supplementary Figure3,  
-* `codes/SupFig3_optimization.mat` will output the optimized parameters.  
-* `codes/SupFig3_trialsimulation.mat` will output plotted figures of simulation results using the original parameters.  
-* `codes/SupFig3_trialsimulation_optimized.mat` will output plotted figures of simulation results using optimized parameters.  
-
-## Detailed Description of each file
-### SupFig1_fitting
-* Train Q-learning model with training sessions.  
-* output: fitted parameters, plotted figures of fitted parameters
-  
-### SupFig1_prediction
-* Predict mice behavior with fitted parameters.  
-* output: plotted figures
-  
-### SupFig2_simulation
-* Simulate training sessions with fitted parameters.  
-* output: plotted figures
-
-### SupFig3_optimization
-* Optimize parameters to acsf/muscimol sessions.  
-* output: optimized parameters  
-  
-### SupFig3_trialsimulation
-* Simulate acsf/musicmol sessions with original/optimized parameters.  
-* output: plotted figures 
+* `codes/SupFig3_optimization.mat` conducts optimization of each parameter and outputs the optimized parameters.  
+* `codes/SupFig3_trialsimulation.mat` plots simulation results using the original parameters.  
+* `codes/SupFig3_trialsimulation_optimized.mat` plots simulation results using optimized parameters.  
