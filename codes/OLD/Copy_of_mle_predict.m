@@ -1,4 +1,4 @@
-function ML_Q = mle_predict(type,wholeses)
+function ML_Q = Copy_of_mle_predict(type,wholeses)
 %rng(1)
 ML_Q = cell(length(wholeses),101);
 

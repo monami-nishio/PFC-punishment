@@ -7,6 +7,7 @@ tasks = {'airpuff', 'omission'};
 types = {'SF', 'SFP'};
 
 figid = 1;
+allp=[];
 for i = 1:length(list)
     rmseall = [];
     for j = 1:length(types)
@@ -43,8 +44,9 @@ for i = 1:length(list)
         plot([rmseall(1,mice) rmseall(2,mice)], 'k')
         hold on
     end
-    [~,p]=ttest(rmseall(1,:), rmseall(2,:));
+    [t,p]=ttest(rmseall(1,:), rmseall(2,:));
     disp(p)
+    allp = [allp p];
     scatter([ones(t) repmat(2,t)], [rmseall(1,:) rmseall(2,:)], 'k')
     ax = gca;
     ax.XAxis.FontSize = 20;

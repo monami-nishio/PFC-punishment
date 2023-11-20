@@ -2,7 +2,8 @@ function [pull, action, rmse_allmice] = mle_evaluate_simulation(type,param_type,
 % max likelihood estimation
 % for Qlearning
 %%
-% rng(4)
+addpath(['..', filesep, 'scripts'])
+rng(4)
 
 fignames = ['A' 'B' 'C' 'D'];
 if figid < 3
@@ -25,7 +26,7 @@ for l = 1:length(wholeses)
     actionBall = [];
     rmseall = [];
     pull = history.success;
-    for i = 1:2
+    for i = 1:1000
         if nametofit=='airpuff';
             switch type 
                 case 'SF' 
@@ -71,7 +72,7 @@ for l = 1:length(wholeses)
     hold on 
     plot(pullAmean, 'Color',[0.9290 0.6940 0.1250],'LineWidth',2)
     session_change = find((sessionA - [1 sessionA(1:length(sessionA)-1)])==1);
-    for change = 2:2:(length(session_change)-1)
+    for change = 1:2:(length(session_change)-1)
         a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
         a.FaceAlpha = 0.2;
     end
@@ -93,7 +94,7 @@ for l = 1:length(wholeses)
     hold on 
     plot(pullBmean,'Color', [0.3010 0.7450 0.9330],'LineWidth',2)
     session_change = find((sessionB - [1 sessionB(1:length(sessionB)-1)])==1);
-    for change = 2:2:(length(session_change)-1)
+    for change = 1:2:(length(session_change)-1)
         a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
         a.FaceAlpha = 0.2;
     end

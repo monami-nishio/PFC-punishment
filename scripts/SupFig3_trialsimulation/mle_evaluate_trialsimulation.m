@@ -1,5 +1,5 @@
 function [pull, action] = mle_evaluate_trialsimulation(type,param_type,wholeses,condition,savefilename, figid)
-% rng(4)
+rng(1)
 
 fignames = ['B' 'C' 'E' 'F'];
 if figid < 3
