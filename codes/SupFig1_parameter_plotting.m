@@ -25,7 +25,6 @@ xticks([0 1 2 3])
 xticklabels({'', 'ToneA','ToneB', ''}) 
 ylabel({'Qpull'})
 [~,p]=ttest(airpuffintlqp,airpuffintlqn);
-disp(p)
 hold off
 
 f2 = figure('Position', [100 100 200 500], 'Name','Figure 4B');
@@ -47,7 +46,6 @@ xticks([0 1 2 3])
 xticklabels({'', 'ToneA','ToneB', ''}) 
 ylabel({'Qnon-pull'})
 [~,p]=ttest(airpuffintlqp,airpuffintlqn);
-disp(p)
 hold off
 
 f3 = figure('Position', [100 100 200 500], 'Name','Figure 4D');
@@ -69,7 +67,6 @@ xticks([0 1 2 3])
 xticklabels({'', 'ToneA','ToneB', ''}) 
 ylabel({'Qpull'})
 [~,p]=ttest(omissionintlqp,omissionintlqn);
-disp(p)
 hold off
 
 f4 = figure('Position', [100 100 200 500], 'Name','Figure 4D');
@@ -91,7 +88,6 @@ xticks([0 1 2 3])
 xticklabels({'', 'ToneA','ToneB', ''}) 
 ylabel({'Qnon-pull'})
 [~,p]=ttest(omissionintlqp,omissionintlqn);
-disp(p)
 hold off
 
 f5 = figure('Position', [100 100 300 500], 'Name','Figure 4E');
