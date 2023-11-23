@@ -46,7 +46,7 @@ for x = 1:length(list)
     end
     f1 = figure('Position', [100 100 500 400], 'Name',strcat('Supplementary Figure5',fignames(x)));
     t=tiledlayout(1,1);
-    for i = 1:height(minsum)
+    for i = 1:width(minsum)
         plot(1:4, minsum(:,i))
         hold on 
     end
