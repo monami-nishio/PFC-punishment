@@ -68,10 +68,18 @@ for l = 1:height(wholeses)
     hold on 
     plot(pullAmean, 'Color',[0.9290 0.6940 0.1250],'LineWidth',2)
     session_change = find((sessionA - [1 sessionA(1:length(sessionA)-1)])==1);
-    for change = 2:2:(length(session_change)-1)
-        a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
-        a.FaceAlpha = 0.2;
+    if mod(length(session_change),2) == 0
+        for change = 1:2:(length(session_change))
+            a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
+            a.FaceAlpha = 0.2;
+        end
+    else
+        for change = 1:2:(length(session_change)-1)
+            a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
+            a.FaceAlpha = 0.2;
+        end
     end
+
     ylim([0,1])
     yticks([0,1])
     ylabel('Pa,pull')
@@ -86,9 +94,16 @@ for l = 1:height(wholeses)
     hold on
     plot(pullBmean,'Color', [0.3010 0.7450 0.9330],'LineWidth',2) 
     session_change = find((sessionB - [1 sessionB(1:length(sessionB)-1)])==1);
-    for change = 2:2:(length(session_change)-1)
-        a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
-        a.FaceAlpha = 0.2;
+    if mod(length(session_change),2) == 0
+        for change = 1:2:(length(session_change))
+            a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
+            a.FaceAlpha = 0.2;
+        end
+    else
+        for change = 1:2:(length(session_change)-1)
+            a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
+            a.FaceAlpha = 0.2;
+        end
     end
     plot(actionBmean,'Color', [0 0.4470 0.7410],'LineWidth',2)
     ylim([0,1])

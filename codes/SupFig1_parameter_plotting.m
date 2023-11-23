@@ -25,7 +25,9 @@ xticks([0 1 2 3])
 xticklabels({'', 'ToneA','ToneB', ''}) 
 ylabel({'Qpull'})
 [~,p]=ttest(airpuffintlqp,airpuffintlqn);
+disp(p)
 hold off
+export_figure_as_epsc_VectorFile(['..', filesep, 'result', filesep, 'Qpull_airpuff'])
 
 f2 = figure('Position', [100 100 200 500], 'Name','Figure 4B');
 airpuffintlqp = [];
@@ -46,7 +48,10 @@ xticks([0 1 2 3])
 xticklabels({'', 'ToneA','ToneB', ''}) 
 ylabel({'Qnon-pull'})
 [~,p]=ttest(airpuffintlqp,airpuffintlqn);
+disp(p)
 hold off
+export_figure_as_epsc_VectorFile(['..', filesep, 'result', filesep, 'Qnonpull_airpuff'])
+
 
 f3 = figure('Position', [100 100 200 500], 'Name','Figure 4D');
 omissionintlqp = [];
@@ -67,7 +72,10 @@ xticks([0 1 2 3])
 xticklabels({'', 'ToneA','ToneB', ''}) 
 ylabel({'Qpull'})
 [~,p]=ttest(omissionintlqp,omissionintlqn);
+disp(p)
 hold off
+export_figure_as_epsc_VectorFile(['..', filesep, 'result', filesep, 'Qpull_omission'])
+
 
 f4 = figure('Position', [100 100 200 500], 'Name','Figure 4D');
 omissionintlqp = [];
@@ -88,7 +96,9 @@ xticks([0 1 2 3])
 xticklabels({'', 'ToneA','ToneB', ''}) 
 ylabel({'Qnon-pull'})
 [~,p]=ttest(omissionintlqp,omissionintlqn);
+disp(p)
 hold off
+export_figure_as_epsc_VectorFile(['..', filesep, 'result', filesep, 'Qnonpull_omission'])
 
 f5 = figure('Position', [100 100 300 500], 'Name','Figure 4E');
 airpuffalpha_l = [];
@@ -117,6 +127,8 @@ ylabel({'αl'})
 hold off
 [~,p]=ttest2(airpuffalpha_l,omissionalpha_l);
 disp(p)
+export_figure_as_epsc_VectorFile(['..', filesep, 'result', filesep, 'αl'])
+
 
 f6 = figure('Position', [100 100 300 500], 'Name','Figure 4F');
 airpuffalpha_f= [];
@@ -145,6 +157,7 @@ ylabel({'αf'})
 hold off
 [~,p]=ttest2(airpuffalpha_f,omissionalpha_f);
 disp(p)
+export_figure_as_epsc_VectorFile(['..', filesep, 'result', filesep, 'αf'])
 
 f7 = figure('Position', [100 100 300 500], 'Name','Figure 4G');
 airpuffkappa_r= [];
@@ -173,6 +186,7 @@ ylabel({'κr'})
 hold off
 [~,p]=ttest2(airpuffkappa_r,omissionkappa_r);
 disp(p)
+export_figure_as_epsc_VectorFile(['..', filesep, 'result', filesep, 'κr'])
 
 f8 = figure('Position', [100 100 200 500], 'Name','Figure 4H');
 airpuffkappa_c= [];
@@ -192,6 +206,7 @@ xticks([0 1 2])
 xticklabels({'', 'Airpuff', ''})
 ylabel({'κp'})
 hold off
+export_figure_as_epsc_VectorFile(['..', filesep, 'result', filesep, 'κp'])
 
 f9 = figure('Position', [100 100 300 500], 'Name','Figure 4I');
 airpufflambda_e = [];
@@ -220,3 +235,4 @@ ylabel({'ψ'})
 hold off
 [~,p]=ttest2(airpufflambda_e,omissionlambda_e);
 disp(p)
+export_figure_as_epsc_VectorFile(['..', filesep, 'result', filesep, 'ψ'])

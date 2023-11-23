@@ -4,11 +4,11 @@ addpath(['..', filesep, 'scripts', filesep,'SupFig1_fitting'])
 tasks = {'airpuff', 'omission'};
 types = {'SFP', 'SF'}; 
 
-for i = 1:length(tasks)
-    for j = 1:length(types)
+for i = 2:length(tasks)
+    for j = 2:length(types)
         param = load(['..', filesep, 'result', filesep , tasks{i}, types{j}, '.mat']);
         if length(types{j})==3
-            for m = 1:height(param)
+            for m = 1:height(param.ML_Q)
                 alpha_l = [];
                 alpha_f = [];
                 kappa_r = [];
@@ -16,6 +16,7 @@ for i = 1:length(tasks)
                 lambda_e = [];
                 intlqp = [];
                 intlqn = [];
+                likelihood = [];                
                 for t = 1:100
                     lm = param.ML_Q{m,1+t};
                     alpha_l = [alpha_l lm.alpha_l];
@@ -25,24 +26,35 @@ for i = 1:length(tasks)
                     lambda_e = [lambda_e lm.lambda_e];
                     intlqp = [intlqp lm.intlqp];
                     intlqn = [intlqn lm.intlqn];
+                    likelihood = [likelihood lm.log_likelihood];
                 end
-                param.ML_Q{m,2}.alpha_l = median(alpha_l);
-                param.ML_Q{m,2}.alpha_f = median(alpha_f);
-                param.ML_Q{m,2}.kappa_r = median(kappa_r);
-                param.ML_Q{m,2}.kappa_c = median(kappa_c);
-                param.ML_Q{m,2}.lambda_e = median(lambda_e);
-                param.ML_Q{m,2}.intlqp = median(intlqp);
-                param.ML_Q{m,2}.intlqn = median(intlqn);
-
+                for like = 1:100
+                    likelihood(like) = int32(likelihood(like));
+                end
+                uniquelikelihood = unique(likelihood);
+                disp(length(uniquelikelihood))
+                if length(uniquelikelihood)>3
+                    index = find(likelihood==uniquelikelihood(4));
+                end
+                minindex = index(1);
+                param.ML_Q{m,2}.alpha_l = alpha_l(minindex);
+                param.ML_Q{m,2}.alpha_f = alpha_f(minindex);
+                param.ML_Q{m,2}.kappa_r = kappa_r(minindex);
+                param.ML_Q{m,2}.kappa_c = kappa_c(minindex);
+                param.ML_Q{m,2}.lambda_e = lambda_e(minindex);
+                param.ML_Q{m,2}.intlqp = intlqp(minindex);
+                param.ML_Q{m,2}.intlqn = intlqn(minindex);
+                param.ML_Q{m,2}.log_likelihood = max(likelihood);
             end
         else
-            for m = 1:height(param)
+            for m = 1:height(param.ML_Q)
                 alpha_l = [];
                 alpha_f = [];
                 kappa_r = [];
                 lambda_e = [];
                 intlqp = [];
                 intlqn = [];
+                likelihood = [];    
                 for t = 1:100
                     lm = param.ML_Q{m,1+t};
                     alpha_l = [alpha_l lm.alpha_l];
@@ -50,14 +62,25 @@ for i = 1:length(tasks)
                     kappa_r = [kappa_r lm.kappa_r];
                     lambda_e = [lambda_e lm.lambda_e];
                     intlqp = [intlqp lm.intlqp];
-                    intlqn = [intlqn lm.intlqn];                    
+                    intlqn = [intlqn lm.intlqn];         
+                    likelihood = [likelihood lm.log_likelihood];
                 end
-                param.ML_Q{m,2}.alpha_l = median(alpha_l);
-                param.ML_Q{m,2}.alpha_f = median(alpha_f);
-                param.ML_Q{m,2}.kappa_r = median(kappa_r);
-                param.ML_Q{m,2}.lambda_e = median(lambda_e);
-                param.ML_Q{m,2}.intlqp = median(intlqp);
-                param.ML_Q{m,2}.intlqn = median(intlqn);
+                for like = 1:100
+                    likelihood(like) = int32(likelihood(like));
+                end
+                uniquelikelihood = unique(likelihood);
+                disp(length(uniquelikelihood))
+                if length(uniquelikelihood)>3
+                    index = find(likelihood==uniquelikelihood(4));
+                end
+                minindex = index(1);
+                param.ML_Q{m,2}.alpha_l = alpha_l(minindex);
+                param.ML_Q{m,2}.alpha_f = alpha_f(minindex);
+                param.ML_Q{m,2}.kappa_r = kappa_r(minindex);
+                param.ML_Q{m,2}.lambda_e = lambda_e(minindex);
+                param.ML_Q{m,2}.intlqp = intlqp(minindex);
+                param.ML_Q{m,2}.intlqn = intlqn(minindex);
+                param.ML_Q{m,2}.log_likelihood = max(likelihood);
             end
         end
         ML_Q = param.ML_Q(:,1:2);

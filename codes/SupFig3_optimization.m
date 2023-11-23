@@ -17,7 +17,7 @@ for i = 1:length(tasks)
         xnew = cell2mat(xnew);
         paramall = [paramall xnew];
     end
-    for j = 2:length(list)
+    for j = 1:length(list)
         nametofit = append(list(j).folder, '/', list(j).name);
         wholeses = load(nametofit).meta_history;
         if i==1

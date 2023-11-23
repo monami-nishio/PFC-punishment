@@ -14,9 +14,13 @@ end
 figure('Position', [100 100 500 120*length(wholeses)], 'Name',strcat('Supplementary Figure 2',fignames(figid)))
 f = tiledlayout(length(wholeses),2);
 rmse_allmice = [];
+all_sessions = [];
 for l = 1:length(wholeses)
     history = wholeses{l,2};
     history.airpuff = history.punish;
+    ses_len = history.ses_len;
+    Cue1 = history.Cue1;
+    Cue2 = history.Cue2;
     sessions = history.ses_len;
     sessionA = sessions(history.Cue1==1);
     sessionB = sessions(history.Cue1==0);
@@ -59,13 +63,13 @@ for l = 1:length(wholeses)
     actionBsem = [];
     for i=1:length(pullA)-10
         pullAmean = [pullAmean mean(pullA(i:i+10))];
-        actionAmean = [actionAmean mean(mean(actionAall(:,i:i+10)))];
-        actionAsem = [actionAsem std(reshape(actionAall(:,i:i+10), 1,[]))/sqrt(10)];
+        actionAmean = [actionAmean mean(mean(actionAall(:,i:i+10),2))];
+        actionAsem = [actionAsem std(mean(actionAall(:,i:i+10),2))];
     end
     for i=1:length(pullB)-10
         pullBmean = [pullBmean mean(pullB(i:i+10))];
-        actionBmean = [actionBmean mean(mean(actionBall(:,i:i+10)))];
-        actionBsem = [actionBsem std(reshape(actionBall(:,i:i+10), 1,[]))/sqrt(10)];
+        actionBmean = [actionBmean mean(mean(actionBall(:,i:i+10),2))];
+        actionBsem = [actionBsem std(mean(actionBall(:,i:i+10),2))];
     end
     nexttile
     title(strcat(mouseid, string(l)))
@@ -111,4 +115,25 @@ for l = 1:length(wholeses)
     xticks([1,length(actionBmean)])
     xticklabels({1,length(actionBmean)+10})
     hold off
+    action = int8(action>0.5);
+    sessions = [];
+    for ses = 1:max(ses_len)
+        cue1 = int8(ses_len==ses)+int8(Cue1)==2;
+        cue2 = int8(ses_len==ses)+int8(Cue2)==2;
+        sessions = [sessions [mean(pull(cue1)); mean(action(cue1)); mean(pull(cue2)); mean(action(cue2))]];
+    end
+    for i = 1:15-width(sessions)
+        sessions = [sessions [NaN; NaN; NaN; NaN]];
+    end
+    all_sessions = [all_sessions; sessions];
 end
+%export_figure_as_epsc_VectorFile(nametofit)
+
+t = figure();
+colors = [[0.9290 0.6940 0.1250],[0.8500 0.3250 0.0980],[0.3010 0.7450 0.9330], [0 0.4470 0.7410]];
+for i = 1:4
+    errorbar([1:width(all_sessions)], nanmean(all_sessions(i:4:height(all_sessions), :)), nanstd(all_sessions(i:4:height(all_sessions), :))/sqrt(5))
+    hold on
+end
+hold off
+t=gcf;

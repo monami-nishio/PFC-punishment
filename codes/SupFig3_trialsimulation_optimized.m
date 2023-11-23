@@ -28,9 +28,10 @@ for i = 1:length(tasks)
     for j = 1:length(list)
         optimizedparams = append('..', filesep, 'param', filesep, 'optimized', filesep, string(tasks(i)), string(types(i)), string(conditions(j)), '.mat');
         x = load(optimizedparams);
-        for iParam = 1:nParam
-            optimized = originalvalues;
-            for iMouse = 1:mousenum
+        for iMouse = 1:mousenum
+            alltone = [];
+            allgap = [];
+            for iParam = 1:nParam
                 originalvalue = originalvalues(iParam,iMouse);
                 all_rs = x.all_rs;
                 row = iParam+nParam*(iMouse-1);
@@ -46,22 +47,24 @@ for i = 1:length(tasks)
                     tone = tone(mid-minvalue:mid+maxvalue);
                     gap = (-minvalue+find(tone==min(tone)))*0.1;
                 end
-                optimized(iParam,iMouse) = optimized(iParam,iMouse)+gap;
+                alltone = [alltone min(tone)];
+                allgap = [allgap originalvalue+gap];
             end
-            nametofit = append(list(j).folder, '/', list(j).name);
-            meta_history = [];
-            load(nametofit)
-            if i==1
-                for t = 1:height(meta_history)
-                    meta_history{t,2}.punish = meta_history{t,2}.airpuff;
-                end
-            elseif i==2
-                for t = 1:height(meta_history)
-                    meta_history{t,2}.punish = meta_history{t,2}.success - meta_history{t,2}.reward;
-                end
-            end
-            [pull, action] = mle_evaluate_trialsimulation(types{i},optimized,meta_history,string(tasks(i)),append(string(tasks(i)),string(types(i)),'_optimized'),figid);
+            originalvalues(find(alltone==min(alltone)),iMouse) = allgap(find(alltone==min(alltone)));
         end
+        nametofit = append(list(j).folder, '/', list(j).name);
+        meta_history = [];
+        load(nametofit)
+        if i==1
+            for t = 1:height(meta_history)
+                meta_history{t,2}.punish = meta_history{t,2}.airpuff;
+            end
+        elseif i==2
+            for t = 1:height(meta_history)
+                meta_history{t,2}.punish = meta_history{t,2}.success - meta_history{t,2}.reward;
+            end
+        end
+        [pull, action] = mle_evaluate_trialsimulation(types{i},originalvalues,meta_history,string(tasks(i)),append(string(tasks(i)),string(types(i)),'_optimized'),figid);
         figid = figid + 1;
     end
 end
