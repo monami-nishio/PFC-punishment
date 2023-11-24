@@ -4,8 +4,8 @@ addpath(['..', filesep, 'scripts', filesep,'SupFig1_fitting'])
 tasks = {'airpuff', 'omission'};
 types = {'SFP', 'SF'}; 
 
-for i = 2:length(tasks)
-    for j = 2:length(types)
+for i = 1:length(tasks)
+    for j = 1:length(types)
         param = load(['..', filesep, 'result', filesep , tasks{i}, types{j}, '.mat']);
         if length(types{j})==3
             for m = 1:height(param.ML_Q)
