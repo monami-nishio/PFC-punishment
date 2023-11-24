@@ -49,7 +49,7 @@ for i = 1:length(list)
     ax = gca;
     ax.XAxis.FontSize = 20;
     ax.YAxis.FontSize = 20;
-    ylim([0,0.7])
+    ylim([0,0.6])
     xlim([0,3])
     xticks([0 1 2 3])
     xticklabels({'', 'S-F', 'P-S-F', ''})

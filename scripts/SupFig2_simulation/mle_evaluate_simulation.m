@@ -76,6 +76,7 @@ for l = 1:length(wholeses)
     hold on 
     plot(pullAmean, 'Color',[0.9290 0.6940 0.1250],'LineWidth',2)
     session_change = find((sessionA - [1 sessionA(1:length(sessionA)-1)])==1);
+    session_change = [session_change length(sessionA)];
     for change = 1:2:(length(session_change)-1)
         a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
         a.FaceAlpha = 0.2;
@@ -98,6 +99,7 @@ for l = 1:length(wholeses)
     hold on 
     plot(pullBmean,'Color', [0.3010 0.7450 0.9330],'LineWidth',2)
     session_change = find((sessionB - [1 sessionB(1:length(sessionB)-1)])==1);
+    session_change = [session_change length(sessionB)];
     for change = 1:2:(length(session_change)-1)
         a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
         a.FaceAlpha = 0.2;
@@ -129,10 +131,12 @@ for l = 1:length(wholeses)
 end
 %export_figure_as_epsc_VectorFile(nametofit)
 
-t = figure();
-colors = [[0.9290 0.6940 0.1250],[0.8500 0.3250 0.0980],[0.3010 0.7450 0.9330], [0 0.4470 0.7410]];
+fignames = {'B-SF', 'B-SFP', 'E-SF', 'E-SFP'};
+figure('Name',strcat('Figure 3',fignames{figid}))
+colors = {[0.9290 0.6940 0.1250],[0.8500 0.3250 0.0980],[0.3010 0.7450 0.9330], [0 0.4470 0.7410]};
 for i = 1:4
-    errorbar([1:width(all_sessions)], nanmean(all_sessions(i:4:height(all_sessions), :)), nanstd(all_sessions(i:4:height(all_sessions), :))/sqrt(5))
+    e = errorbar([1:width(all_sessions)], nanmean(all_sessions(i:4:height(all_sessions), :)), nanstd(all_sessions(i:4:height(all_sessions), :))/sqrt(5));
+    e.Color = colors{i};
     hold on
 end
 hold off

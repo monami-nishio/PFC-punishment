@@ -1,7 +1,7 @@
 clear 
 
-list = dir('/Users/monaminishio/Documents/MATLAB/PFC-punishment/param/optimized/airpuffSFP*.mat');
-ML_Q = load('/Users/monaminishio/Documents/MATLAB/PFC-punishment/param/original/airpuffSFP.mat');
+list = dir(['..', filesep, 'param', filesep, 'optimized', filesep, 'airpuffSFP*.mat']);
+ML_Q = load(['..', filesep, 'param', filesep, 'original',filesep, 'airpuffSFP.mat']);
 originalvalues = []; 
 for i = 1:5
     df = ML_Q.ML_Q{i, 2};
@@ -55,7 +55,7 @@ for x = 1:length(list)
     f1 = figure('Position', [100 100 500 400], 'Name',strcat('Figure 6',fignames(x)));
     t=tiledlayout(1,1);
     for i = 1:height(minsum)
-        plot(1:5, minsum(:,i))
+        plot(1:5, minsum(:,i), 'k')
         hold on 
     end
     ylim([-0.5,0])
@@ -77,7 +77,7 @@ f2 = figure('Position', [100 100 200 400], 'Name', 'Figure 6G');
 [~,p] = ttest(minRMSE(1,:),minRMSE(2,:));
 disp(p)
 for i = 1:width(minRMSE)
-    plot(1:2, [minRMSE(1,i),minRMSE(2,i)])
+    plot(1:2, [minRMSE(1,i),minRMSE(2,i)], 'k')
     hold on 
 end
 ylim([-0.5,0])
@@ -94,7 +94,7 @@ f3 = figure('Position', [100 100 200 400], 'Name', 'Figure 6H');
 [~,p] = ttest(minkappar(1,:),minkappar(2,:));
 disp(p)
 for i = 1:width(minkappar)
-    plot(1:2, [minkappar(1,i),minkappar(2,i)])
+    plot(1:2, [minkappar(1,i),minkappar(2,i)], 'k')
     hold on 
 end
 ylim([0,20])
@@ -111,7 +111,7 @@ f4 = figure('Position', [100 100 200 400], 'Name', 'Figure 6I QA,pull');
 [~,p] = ttest(minQ(1:5,1),minQ(6:10,1));
 disp(p)
 for i = 1:5
-    plot(1:2, [minQ(i,1),minQ(i+5,1)])
+    plot(1:2, [minQ(i,1),minQ(i+5,1)], 'k')
     hold on 
 end
 ylim([0,20])
@@ -128,7 +128,7 @@ f5 = figure('Position', [100 100 200 400], 'Name', 'Figure 6I QA,non-pull');
 [~,p] = ttest(minQ(1:5,3),minQ(6:10,3));
 disp(p)
 for i = 1:5
-    plot(1:2, [minQ(i,3),minQ(i+5,3)])
+    plot(1:2, [minQ(i,3),minQ(i+5,3)], 'k')
     hold on 
 end
 ylim([0,20])
@@ -145,7 +145,7 @@ f6 = figure('Position', [100 100 200 400], 'Name', 'Figure 6I QB,pull');
 [~,p] = ttest(minQ(1:5,2),minQ(6:10,2));
 disp(p)
 for i = 1:5
-    plot(1:2, [minQ(i,2),minQ(i+5,2)])
+    plot(1:2, [minQ(i,2),minQ(i+5,2)], 'k')
     hold on 
 end
 ylim([0,20])
@@ -162,7 +162,7 @@ f7 = figure('Position', [100 100 200 400], 'Name', 'Figure 6I QB,non-pull');
 [~,p] = ttest(minQ(1:5,4),minQ(6:10,4));
 disp(p)
 for i = 1:5
-    plot(1:2, [minQ(i,4),minQ(i+5,4)])
+    plot(1:2, [minQ(i,4),minQ(i+5,4)], 'k')
     hold on 
 end
 ylim([0,20])

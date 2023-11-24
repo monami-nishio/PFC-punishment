@@ -48,7 +48,7 @@ for x = 1:length(list)
     f1 = figure('Position', [100 100 500 400], 'Name',strcat('Supplementary Figure5',fignames(x)));
     t=tiledlayout(1,1);
     for i = 1:width(minsum)
-        plot(1:4, minsum(:,i), 'k')
+        plot(1:4, minsum(:,i), color=colorlist{i})
         hold on 
     end
     ylim([-0.5,0])
@@ -67,7 +67,7 @@ f2 = figure('Position', [100 100 200 400], 'Name', 'Figure 6G');
 [~,p] = ttest(minRMSE(1,:),minRMSE(2,:));
 disp(p)
 for i = 1:width(minRMSE)
-    plot(1:2, [minRMSE(1,i),minRMSE(2,i)], 'k')
+    plot(1:2, [minRMSE(1,i),minRMSE(2,i)])
     hold on 
 end
 ylim([-0.5,0])

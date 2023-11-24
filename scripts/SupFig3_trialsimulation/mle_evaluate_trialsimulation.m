@@ -2,7 +2,7 @@ function [pull, action] = mle_evaluate_trialsimulation(type,param_type,wholeses,
 rng(1)
 
 fignames = ['B' 'C' 'E' 'F'];
-fig6names = ['A' 'B' 'C' 'D'];
+fig6names = {'Fig6', 'Fig6', 'Supplementary Figure 5', 'Supplementary Figure 5'};
 if figid < 3
     mouseid='AM';
 else
@@ -140,7 +140,7 @@ for l = 1:length(wholeses)
     end
 end
 %export_figure_as_epsc_VectorFile(['..', filesep, 'result', filesep, strcat('Supplementary Figure 3',fignames(figid))])
-figure('Position', [100 100 250 120], 'Name',strcat('Figure 6',fig6names(figid)))
+figure('Position', [100 100 250 120], 'Name', fig6names{figid})
 t = tiledlayout(1,2);
 nexttile
 upper = mean(pullAs) + std(pullAs)/sqrt(length(wholeses));
