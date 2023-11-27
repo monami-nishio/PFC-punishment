@@ -70,10 +70,9 @@ for l = 1:height(wholeses)
     session_change = find((sessionA - [1 sessionA(1:length(sessionA)-1)])==1);
     session_change = [session_change length(sessionA)];
     for change = 1:2:(length(session_change)-1)
-        a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
+        a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black", "EdgeColor", "none");
         a.FaceAlpha = 0.2;
     end
-
     ylim([0,1])
     yticks([0,1])
     ylabel('Pa,pull')
@@ -90,7 +89,7 @@ for l = 1:height(wholeses)
     session_change = find((sessionB - [1 sessionB(1:length(sessionB)-1)])==1);
     session_change = [session_change length(sessionB)];
     for change = 1:2:(length(session_change)-1)
-        a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black");
+        a = area([session_change(change) session_change(change+1)], [1 1], "FaceColor", "black", "EdgeColor", "none");
         a.FaceAlpha = 0.2;
     end
     plot(actionBmean,'Color', [0 0.4470 0.7410],'LineWidth',2)

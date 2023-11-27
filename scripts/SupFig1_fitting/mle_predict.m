@@ -1,5 +1,5 @@
 function ML_Q = mle_predict(type,wholeses)
-%rng(1)
+rng(1)
 ML_Q = cell(length(wholeses),101);
 
 for l = 1:height(wholeses)

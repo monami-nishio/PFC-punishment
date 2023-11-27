@@ -32,11 +32,12 @@ for i = 1:length(tasks)
                     likelihood(like) = int32(likelihood(like));
                 end
                 uniquelikelihood = unique(likelihood);
-                disp(length(uniquelikelihood))
                 if length(uniquelikelihood)>3
                     index = find(likelihood==uniquelikelihood(4));
+                    minindex = index(1);
+                else
+                    minindex = 1;
                 end
-                minindex = index(1);
                 param.ML_Q{m,2}.alpha_l = alpha_l(minindex);
                 param.ML_Q{m,2}.alpha_f = alpha_f(minindex);
                 param.ML_Q{m,2}.kappa_r = kappa_r(minindex);
@@ -69,11 +70,12 @@ for i = 1:length(tasks)
                     likelihood(like) = int32(likelihood(like));
                 end
                 uniquelikelihood = unique(likelihood);
-                disp(length(uniquelikelihood))
                 if length(uniquelikelihood)>3
                     index = find(likelihood==uniquelikelihood(4));
+                    minindex = index(1);
+                else
+                    minindex = 1;
                 end
-                minindex = index(1);
                 param.ML_Q{m,2}.alpha_l = alpha_l(minindex);
                 param.ML_Q{m,2}.alpha_f = alpha_f(minindex);
                 param.ML_Q{m,2}.kappa_r = kappa_r(minindex);
