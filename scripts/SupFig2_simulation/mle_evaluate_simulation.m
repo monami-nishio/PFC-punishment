@@ -131,13 +131,18 @@ for l = 1:length(wholeses)
 end
 %export_figure_as_epsc_VectorFile(nametofit)
 
-fignames = {'B-SF', 'B-SFP', 'E-SF', 'E-SFP'};
-figure('Name',strcat('Figure 3',fignames{figid}))
-colors = {[0.9290 0.6940 0.1250],[0.8500 0.3250 0.0980],[0.3010 0.7450 0.9330], [0 0.4470 0.7410]};
-for i = 1:4
-    e = errorbar([1:width(all_sessions)], nanmean(all_sessions(i:4:height(all_sessions), :)), nanstd(all_sessions(i:4:height(all_sessions), :))/sqrt(5));
-    e.Color = colors{i};
-    hold on
-end
-hold off
-t=gcf;
+%fignames = {'B-SF', 'B-SFP', 'E-SF', 'E-SFP'};
+%if figid < 3
+%    sum = 5;
+%else
+%    sum = 7;
+%end
+%figure('Name',strcat('Figure 3',fignames{figid}))
+%colors = {[0.9290 0.6940 0.1250],[0.8500 0.3250 0.0980],[0.3010 0.7450 0.9330], [0 0.4470 0.7410]};
+%for i = 1:4
+%    e = errorbar([1:width(all_sessions)], nanmean(all_sessions(i:4:height(all_sessions), :)), nanstd(all_sessions(i:4:height(all_sessions), :))/sqrt(sum));
+%    e.Color = colors{i};
+%    hold on
+%end
+%hold off
+%t=gcf;
