@@ -1,7 +1,7 @@
 function [pull, action,ml] = mle_evaluate_prediction(type,param_type,wholeses,nametofit,figid)
 % max likelihood estimation
 % for Q_learning
-rng(4)
+rng(1)
 
 fignames = ['A' 'B' 'C' 'D'];
 if figid < 3

@@ -3,7 +3,7 @@ function [pull, action, rmse_allmice] = mle_evaluate_simulation(type,param_type,
 % for Qlearning
 %%
 addpath(['..', filesep, 'scripts'])
-rng(4)
+rng(1)
 
 fignames = ['A' 'B' 'C' 'D'];
 if figid < 3
