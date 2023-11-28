@@ -28,6 +28,7 @@ for l = 1:length(wholeses)
     tr = 1;
     actionAall = [];
     actionBall = [];
+    actionall = [];
     rmseall = [];
     pull = history.success;
     for i = 1:1000
@@ -48,6 +49,7 @@ for l = 1:length(wholeses)
         end
         actionAall = [actionAall; action(history.Cue1==1)];
         actionBall = [actionBall; action(history.Cue1==0)];
+        actionall = [actionall; action];
         %rmse = sum(pull==(action>0.5), 'all')/numel(action);
         rmse = sqrt(immse(pull, action));
         rmseall = [rmseall rmse];
@@ -122,7 +124,8 @@ for l = 1:length(wholeses)
     for ses = 1:max(ses_len)
         cue1 = int8(ses_len==ses)+int8(Cue1)==2;
         cue2 = int8(ses_len==ses)+int8(Cue2)==2;
-        sessions = [sessions [mean(pull(cue1)); mean(action(cue1)); mean(pull(cue2)); mean(action(cue2))]];
+        meanaction = mean(actionall);
+        sessions = [sessions [mean(pull(cue1)); mean(meanaction(cue1)); mean(pull(cue2)); mean(meanaction(cue2))]];
     end
     for i = 1:15-width(sessions)
         sessions = [sessions [NaN; NaN; NaN; NaN]];
@@ -131,18 +134,18 @@ for l = 1:length(wholeses)
 end
 %export_figure_as_epsc_VectorFile(nametofit)
 
-%fignames = {'B-SF', 'B-SFP', 'E-SF', 'E-SFP'};
-%if figid < 3
-%    sum = 5;
-%else
-%    sum = 7;
-%end
-%figure('Name',strcat('Figure 3',fignames{figid}))
-%colors = {[0.9290 0.6940 0.1250],[0.8500 0.3250 0.0980],[0.3010 0.7450 0.9330], [0 0.4470 0.7410]};
-%for i = 1:4
-%    e = errorbar([1:width(all_sessions)], nanmean(all_sessions(i:4:height(all_sessions), :)), nanstd(all_sessions(i:4:height(all_sessions), :))/sqrt(sum));
-%    e.Color = colors{i};
-%    hold on
-%end
-%hold off
-%t=gcf;
+fignames = {'B-SF', 'B-SFP', 'E-SF', 'E-SFP'};
+if figid < 3
+   sum = 5;
+else
+   sum = 7;
+end
+figure('Name',strcat('Figure 3',fignames{figid}))
+colors = {[0.9290 0.6940 0.1250],[0.8500 0.3250 0.0980],[0.3010 0.7450 0.9330], [0 0.4470 0.7410]};
+for i = 1:4
+   e = errorbar([1:width(all_sessions)], nanmean(all_sessions(i:4:height(all_sessions), :)), nanstd(all_sessions(i:4:height(all_sessions), :))/sqrt(sum));
+   e.Color = colors{i};
+   hold on
+end
+hold off
+t=gcf;
