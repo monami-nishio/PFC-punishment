@@ -116,7 +116,7 @@ for i = 1:5
 end
 ylim([0,20])
 xticks([1,2])
-ylabel('κr')
+ylabel('QA,pull')
 xlim([0,3])
 xticks([1,2])
 xticklabels({'ACSF' 'Muscimol'})
@@ -133,7 +133,7 @@ for i = 1:5
 end
 ylim([0,20])
 xticks([1,2])
-ylabel('κr')
+ylabel('QA,non-pull')
 xlim([0,3])
 xticks([1,2])
 xticklabels({'ACSF' 'Muscimol'})
@@ -150,7 +150,7 @@ for i = 1:5
 end
 ylim([0,20])
 xticks([1,2])
-ylabel('κr')
+ylabel('QB,pull')
 xlim([0,3])
 xticks([1,2])
 xticklabels({'ACSF' 'Muscimol'})
@@ -167,7 +167,7 @@ for i = 1:5
 end
 ylim([0,20])
 xticks([1,2])
-ylabel('κr')
+ylabel('QB,non-pull')
 xlim([0,3])
 xticks([1,2])
 xticklabels({'ACSF' 'Muscimol'})
