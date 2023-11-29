@@ -1,7 +1,7 @@
 # PFC-punishment
 
 ## About
-This is the code to replicate the fitting, prediction, and simulation analysis of the reinforcement model in Nishio et al.
+This is the code to replicate the fitting, prediction, and simulation analysis of the reinforcement model in Nishio et al.  
 [Link to the paper]
 
 ## How to run
