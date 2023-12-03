@@ -134,7 +134,7 @@ for l = 1:length(wholeses)
 end
 %export_figure_as_epsc_VectorFile(nametofit)
 
-fignames = {'B-SF', 'B-SFP', 'E-SF', 'E-SFP'};
+fignames = {'B-SF', 'B-PSF', 'E-SF', 'E-PSF'};
 if figid < 3
    sum = 5;
 else
