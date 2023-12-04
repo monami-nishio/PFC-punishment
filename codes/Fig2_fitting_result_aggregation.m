@@ -6,7 +6,7 @@ types = {'SFP', 'SF'};
 
 for i = 1:length(tasks)
     for j = 1:length(types)
-        param = load(['..', filesep, 'result', filesep , tasks{i}, types{j}, '.mat']);
+        param = load(['..', filesep, 'param', filesep , 'fitting', filesep , tasks{i}, types{j}, '.mat']);
         if length(types{j})==3
             for m = 1:height(param.ML_Q)
                 alpha_l = [];
@@ -70,6 +70,6 @@ for i = 1:length(tasks)
             end
         end
         ML_Q = param.ML_Q(:,1:2);
-        save(append('..', filesep, 'param', filesep , 'original', filesep , tasks{i}, types{j}),'ML_Q')
+        save(append('..', filesep, 'result', tasks{i}, types{j}),'ML_Q')
     end
 end
