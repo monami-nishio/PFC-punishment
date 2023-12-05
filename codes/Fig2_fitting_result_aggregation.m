@@ -70,6 +70,6 @@ for i = 1:length(tasks)
             end
         end
         ML_Q = param.ML_Q(:,1:2);
-        save(append('..', filesep, 'result', tasks{i}, types{j}),'ML_Q')
+        save(append('..', filesep, 'result', filesep,tasks{i}, types{j}),'ML_Q')
     end
 end
