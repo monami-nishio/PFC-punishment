@@ -14,7 +14,7 @@ Clone this repository.
 
 To reproduce Figure 2,   
 * `codes/Fig2_fitting.m` repeats fitting 5000 (50x100) times and plots the fitted parameters. Executing this code takes about 3 days; therefore, we pre-store the parameters in advance in the 'param/' directory.
-* `codes/Fig2_fitting_result_aggregation.m` aggregates 100 fitting results and chooses the parameters of the maximum log-likelihood.
+* `codes/Fig2_fitting_result_aggregation.m` aggregates 100 fitting results and chooses the parameters of the maximum log likelihood.
 
 To reproduce Figure 4,   
 * `codes/Fig4_parameter_plotting.m` plots fitted parameters.  
