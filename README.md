@@ -4,12 +4,17 @@
 This is the code to replicate the fitting, prediction, and simulation analysis of the reinforcement model in Nishio et al.  
 [Link to the paper]
 
+## Installation
+Install following MATLAB packages 
+* Optimization Toolbox [https://www.mathworks.com/products/optimization.html]
+* Statistics and Machine Learning Toolbox [https://www.mathworks.com/products/statistics.html]
+Clone this repository.  
+
 ## How to run
-First, clone this repository.  
 
 To reproduce Figure 2,   
-* `codes/Fig2_fitting.m` repeats fitting 100 times and plots the fitted parameters.
-* `codes/Fig2_fitting_result_aggregation.m` aggregates 100 fitting results and chooses the parameters of the smallest likelihood.
+* `codes/Fig2_fitting.m` repeats fitting 5000 (50x100) times and plots the fitted parameters. Executing this code takes about 3 days; therefore, we pre-store the parameters in advance in the 'param/' directory.
+* `codes/Fig2_fitting_result_aggregation.m` aggregates 100 fitting results and chooses the parameters of the maximum log likelihood.
 
 To reproduce Figure 4,   
 * `codes/Fig4_parameter_plotting.m` plots fitted parameters.  
