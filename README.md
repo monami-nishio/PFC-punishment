@@ -4,7 +4,8 @@
 This is the code to replicate the fitting, prediction, and simulation analysis of the reinforcement model in Nishio et al.  
 [Link to the paper]
 
-## Installation
+## Setup
+The code is initially executed in MATLAB 2023a on a Mac.
 Install following MATLAB packages 
 * Optimization Toolbox [https://www.mathworks.com/products/optimization.html]
 * Statistics and Machine Learning Toolbox [https://www.mathworks.com/products/statistics.html]
