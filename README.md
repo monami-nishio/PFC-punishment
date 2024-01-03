@@ -23,7 +23,7 @@ Following information are included in corresponding columns.
 | Cue1 | tone A was presented (0/1) |
 | Cue2 | tone B was presented (0/1) |
 | reward | Reward (water) was presented (0/1) |
-| punish | Punishment(airpuff) was presented (0/1) |
+| punish | Punishment (airpuff) was presented (0/1) |
 | RT | Response Time |
 | ses_len | Number of trials for each training session |
 | ses_len1 | Number of tone A trials for each training session |
@@ -43,7 +43,7 @@ Following information are included in corresponding columns.
 | Cue1 | tone A was presented (0/1) |
 | Cue2 | tone B was presented (0/1) |
 | reward | Reward (water) was presented (0/1) |
-| punish | Punishment(airpuff) was presented (0/1) |
+| punish | Punishment (airpuff) was presented (0/1) |
 | RT | Response Time |
 | consumatoryLick | Number of licks after reward presentation |
 | anticipatoryLick | Number of licks before go cue |
