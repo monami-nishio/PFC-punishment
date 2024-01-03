@@ -14,43 +14,42 @@ Clone this repository.
 ## Dataset (/dataset)
 Following files include behavioral information during training sessions.
 - wholeses_airpuff.mat
-- wholeses_omission.mat
-Following information are included in corresponding columns.
+- wholeses_omission.mat  
+Following information are included in corresponding columns.  
 | Column | Description |
 | ---- | ---- |
-| success | TD |
-| Cue1 | TD |
-| Cue2 | TD |
-| reward | TD |
-| punish | TD |
-| RT | TD |
-| LD | TD |
-| ses_len | TD |
-| ses_len1 | TD |
-| ses_len2 | TD |
+| success | Lever successfully pulled (0/1) |
+| Cue1 | tone A was presented (0/1) |
+| Cue2 | tone B was presented (0/1) |
+| reward | Reward (water) was presented (0/1) |
+| punish | Punishment(airpuff) was presented (0/1) |
+| RT | Response Time |
+| ses_len | Number of trials for each training session |
+| ses_len1 | Number of tone A trials for each training session |
+| ses_len2 | Number of tone B trials for each training session |
 
 Following files include behavioral information for acsf/muscimol sessions.
 - airpuff_acsf_history.mat
 - airpuff_muscimol_history.mat
 - omission_acsf_history.mat
-- omission_muscimol_history.mat
-Following information are included in corresponding columns.
+- omission_muscimol_history.mat  
+Following information are included in corresponding columns.  
 | Column | Description |
 | ---- | ---- |
-| trial_idx | TD |
-| success | TD |
-| Cue1 | TD |
-| Cue2 | TD |
-| reward | TD |
-| airpuff | TD |
-| RTtoTone | TD |
-| consumatoryLick | TD |
-| anticipatoryLick | TD |
-| earlypull | TD |
-| analyzed | TD |
-| LeverPullDuration | TD |
-| LickDuration | TD |
-| PullSpeed | TD |
+| trial_idx | ID of each trial |
+| success | Lever successfully pulled (0/1) |
+| Cue1 | tone A was presented (0/1) |
+| Cue2 | tone B was presented (0/1) |
+| reward | Reward (water) was presented (0/1) |
+| punish | Punishment(airpuff) was presented (0/1) |
+| RT | Response Time |
+| consumatoryLick | Number of licks after reward presentation |
+| anticipatoryLick | Number of licks before go cue |
+| earlypull | Number of pulls before go cue |
+| analyzed | Trials prior to obtaining 60% of the total planned reward (0/1)|
+| LeverPullDuration | Duration of the lever pulled above the threshold |
+| LickDuration | Duration of the licking the spout |
+| PullSpeed | Speed of pulling the lever |
 
 ## How to run (/codes)
 
