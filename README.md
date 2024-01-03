@@ -49,9 +49,9 @@ The information below is included in each file.
 | anticipatoryLick | Number of licks before go cue |
 | earlypull | Number of pulls before go cue |
 | analyzed | Trials prior to obtaining 60% of the total planned reward (0/1)|
-| LeverPullDuration | Duration of the lever pulled above the threshold |
-| LickDuration | Duration of the licking the spout |
-| PullSpeed | Speed of pulling the lever |
+| LeverPullDuration | Duration of lever pulled above the threshold |
+| LickDuration | Duration of licking |
+| PullSpeed | Speed of pulling lever |
 
 ## How to run (/codes)
 
