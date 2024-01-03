@@ -14,7 +14,8 @@ Clone this repository.
 ## Dataset (/dataset)
 Following files include behavioral information during training sessions.
 - wholeses_airpuff.mat
-- wholeses_omission.mat  
+- wholeses_omission.mat
+
 Following information are included in corresponding columns.  
 | Column | Description |
 | ---- | ---- |
@@ -32,7 +33,8 @@ Following files include behavioral information for acsf/muscimol sessions.
 - airpuff_acsf_history.mat
 - airpuff_muscimol_history.mat
 - omission_acsf_history.mat
-- omission_muscimol_history.mat  
+- omission_muscimol_history.mat
+
 Following information are included in corresponding columns.  
 | Column | Description |
 | ---- | ---- |
