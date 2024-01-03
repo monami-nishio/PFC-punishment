@@ -16,7 +16,7 @@ Following files include behavioral information during training sessions.
 - wholeses_airpuff.mat
 - wholeses_omission.mat
 
-Following information are included in corresponding columns.  
+The information below is included in each file.
 | Column | Description |
 | ---- | ---- |
 | success | Lever successfully pulled (0/1) |
@@ -35,7 +35,7 @@ Following files include behavioral information for acsf/muscimol sessions.
 - omission_acsf_history.mat
 - omission_muscimol_history.mat
 
-Following information are included in corresponding columns.  
+The information below is included in each file.
 | Column | Description |
 | ---- | ---- |
 | trial_idx | ID of each trial |
