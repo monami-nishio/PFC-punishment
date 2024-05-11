@@ -1,10 +1,10 @@
 # PFC-punishment
 
 ## About
-This is the codes to replicate the fitting, prediction, and simulation analysis of the reinforcement model in *Medial prefrontal cortex
+This is the codes to replicate the fitting, prediction, and simulation analysis of the reinforcement model in **Medial prefrontal cortex
 suppresses reward-seeking
 behavior with risk of punishment
-by reducing sensitivity to reward, Nishio et al., 2024, Frontiers in Neuroscience doi: 10.3389/fnins.2024.1412509*. 
+by reducing sensitivity to reward, Nishio et al., 2024, Frontiers in Neuroscience doi: 10.3389/fnins.2024.1412509**. 
 
 ## Setup
 The code is initially executed in MATLAB 2023a on a Mac.
